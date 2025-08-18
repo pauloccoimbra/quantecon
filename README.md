@@ -5,7 +5,7 @@
 ![Feito com: Django](https://img.shields.io/badge/feito%20com-Django-green)
 ![Frontend: Next.js](https://img.shields.io/badge/frontend-Next.js-blue)
 
-![Imagem de capa do projeto QuantEcon](https://github.com/ufjf-quantecon/assets/capa-cyberpunk-v3.png)
+![Imagem de capa do projeto QuantEcon](https://github.com/ufjf-quantecon/assets/capa-quantecon.png)
 
 ## 📌 Sobre o projeto
 
