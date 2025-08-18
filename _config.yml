@@ -1,0 +1,33 @@
+title: "QuantEcon — UFJF"
+description: "Ciência de Dados e IA aplicados à Economia e Finanças"
+theme: "just-the-docs"
+color_scheme: "dark"
+logo: "/assets/logo-quantecon.png"
+
+url: "https://ufjf-quantecon.github.io"
+baseurl: "/"
+
+aux_links:
+  "LinkedIn — Página": https://linkedin.com/company/quantecon-ufjf
+  "LinkedIn — Grupo": https://linkedin.com/groups/quant-econ-ufjf
+  "GitHub": https://github.com/ufjf-quantecon
+  "Contato institucional": mailto:extensao_quantecon@ufjf.br
+
+nav:
+  - title: "Início"
+    url: "/docs/index"
+  - title: "Sobre"
+    url: "/docs/sobre"
+  - title: "Boletins"
+    url: "/docs/boletins"
+  - title: "Minicursos"
+    url: "/docs/minicursos"
+  - title: "Tutoriais"
+    url: "/docs/tutoriais"
+  - title: "Resultados"
+    url: "/docs/resultados"
+  - title: "Comunicados"
+    url: "/docs/comunicados"
+  - title: "Contato"
+    url: "/docs/contato"
+
