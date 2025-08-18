@@ -57,5 +57,15 @@
     <p>Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a></p>
     <p>Licença MIT</p>
   </footer>
+
+  <script>
+    // Destacar página atual no menu
+    const links = document.querySelectorAll("nav a");
+    links.forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add("ativo");
+      }
+    });
+  </script>
 </body>
 </html>
