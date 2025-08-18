@@ -25,9 +25,6 @@ nav:
     url: "/docs/boletins"
   - title: "Minicursos"
     url: "/docs/minicursos"
-
-sass
-  style: compressed
   - title: "Tutoriais"
     url: "/docs/tutoriais"
   - title: "Resultados"
@@ -36,4 +33,8 @@ sass
     url: "/docs/comunicados"
   - title: "Contato"
     url: "/docs/contato"
+
+  sass:
+  style: compressed
+
 
