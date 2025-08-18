@@ -118,8 +118,8 @@ footer {
 footer {
   font-size: 0.8rem;
   text-align: center;
-  padding: 1em;
-  background-color: #1a1a1a;
+  padding: 1rem;
+  background-color: #1e3a8a;
   color: #ccc;
 }
 
@@ -127,4 +127,5 @@ footer a {
   color: #ffffff !important;
   text-decoration: underline;
 }
+
 }
