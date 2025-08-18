@@ -111,4 +111,20 @@ footer {
   .cards {
     flex-direction: column;
   }
+
+  @import "{{ site.theme }}";
+
+/* Rodapé personalizado */
+footer {
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 1em;
+  background-color: #1a1a1a;
+  color: #ccc;
+}
+
+footer a {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
 }
