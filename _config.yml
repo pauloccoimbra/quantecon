@@ -35,6 +35,6 @@ nav:
     url: "/docs/contato"
 
   sass:
-  style: compressed
+     style: compressed
 
 
