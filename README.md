@@ -31,9 +31,9 @@ Este repositório abriga tutoriais, minicursos, dashboards e pipelines desenvolv
 ## 🌐 Canais oficiais
 
 - [Site institucional](https://quantecon.ufjf.br) *(em construção)*
-- [LinkedIn – Página](https://linkedin.com/company/quantecon-ufjf)
-- [LinkedIn – Grupo](https://linkedin.com/groups/quant-econ-ufjf)
-- [Newsletter / E-mail](mailto:extensao_quantecon@ufjf.br)
+- [LinkedIn – Página](https://linkedin.com/company/quantecon-ufjf) *(em construção)*
+- [LinkedIn – Grupo](https://linkedin.com/groups/quant-econ-ufjf) *(em construção)*
+- [Newsletter / E-mail](mailto:paulo.coimbra@ufjf.br)
 
 ## 📄 Licença
 
