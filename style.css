@@ -30,6 +30,10 @@ nav a {
   font-weight: bold;
 }
 
+nav a.ativo {
+  border-bottom: 2px solid white;
+}
+
 .hero {
   text-align: center;
   padding: 2rem;
