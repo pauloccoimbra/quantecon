@@ -16,6 +16,9 @@ aux_links:
   "GitHub": https://github.com/ufjf-quantecon
   "Contato institucional": mailto:extensao_quantecon@ufjf.br
 
+sass:
+  style: compressed
+  
 nav:
   - title: "Início"
     url: "/docs/index"
@@ -33,8 +36,4 @@ nav:
     url: "/docs/comunicados"
   - title: "Contato"
     url: "/docs/contato"
-
-  sass:
-     style: compressed
-
-
+    
