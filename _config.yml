@@ -2,7 +2,7 @@ title: "QuantEcon — UFJF"
 description: "Ciência de Dados e IA aplicados à Economia e Finanças"
 theme: "just-the-docs"
 color_scheme: "dark"
-logo: "/assets/logo-quantecon.png"
+logo: "/assets/capa-quantecon.png"
 
 url: "https://ufjf-quantecon.github.io"
 baseurl: "/"
