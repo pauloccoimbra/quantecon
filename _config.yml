@@ -1,10 +1,13 @@
-title: "QuantEcon — UFJF"
-description: "Ciência de Dados e IA aplicados à Economia e Finanças"
-theme: "cayman"
-color_scheme: "dark"
-logo: "/assets/capa-quantecon.png"
+title: QuantEcon — UFJF
+description: Ciência de Dados e IA aplicados à Economia e Finanças
+remote_theme: pages-themes/cayman@v0.2.0
 
-url: "https://ufjf-quantecon.github.io"
+plugins:
+  - jekyll-remote-theme 
+color_scheme: "dark"
+logo: "/assets/Paulo_C_Coimbra_Academy_logo.jpg"
+
+url: "https://pauloccoimbra.github.io"
 baseurl: "/"
 
 aux_links:
