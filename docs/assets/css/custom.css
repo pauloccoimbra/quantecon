@@ -74,6 +74,39 @@ html[data-theme="light"] .qe-card{
   filter: brightness(1.05);
 }
 
+/* ===== Sidebar recolhível (JTD) ===== */
+:root { --sidebar-w: 220px; }  /* ajuste 200–240px se quiser */
+
+@media (min-width: 66rem) {
+  .side-bar { width: var(--sidebar-w); }
+  .main, .main-content-wrap { margin-left: var(--sidebar-w); }
+}
+
+/* animações suaves */
+.side-bar, .main, .main-content-wrap {
+  transition: margin-left .2s ease, transform .2s ease;
+}
+
+/* estado recolhido */
+body.sidebar-collapsed .side-bar { transform: translateX(-100%); }
+body.sidebar-collapsed .main,
+body.sidebar-collapsed .main-content-wrap { margin-left: 0 !important; }
+
+/* Botão fixo (sempre visível) */
+#sidebar-toggle{
+  position: fixed;
+  top: .75rem;
+  left: .75rem;
+  z-index: 1000;
+  border: 1px solid var(--color-border, #c8c8c8);
+  background: var(--color-canvas, #fff);
+  color: var(--color-fg-default, inherit);
+  border-radius: .5rem;
+  padding: .35rem .6rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
 /* Nota de rodapé menor e mais discreta */
 .qe-footer{
   font-size: 0.75rem;      /* ~14px; pode usar 0.8rem se quiser menor */
