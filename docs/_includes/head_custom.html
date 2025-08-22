@@ -1,3 +1,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+<style>
+  /* >>> ajuste aqui a largura desejada da sidebar <<< */
+  :root { --sidebar-w: 200px; }
+
+  /* Largura da sidebar e recuo do conteúdo (desktop) */
+  @media (min-width: 66rem) {
+    .side-bar { width: var(--sidebar-w); }
+    .main { margin-left: var(--sidebar-w); }
+  }
+
+  /* Animações suaves */
+  .side-bar, .main {
+    transition: margin-left .2s ease, transform .2s ease;
+  }
+
+  /* Modo "recolhida" */
+  body.sidebar-collapsed .side-bar {
+    transform: translateX(-100%);
+  }
+  body.sidebar-collapsed .main {
+    margin-left: 0 !important;
+  }
+
+  /* Botão para alternar sidebar (só em telas largas; no mobile o JTD já tem menu) */
+  #sidebar-toggle {
+    position: fixed;
+    top: .75rem; left: .75rem;
+    z-index: 1000;
+    border: 1px solid var(--color-border, #c8c8c8);
+    background: var(--color-canvas, #fff);
+    border-radius: .5rem;
+    padding: .35rem .6rem;
+    cursor: pointer;
+  }
+  @media (max-width: 66rem) {
+    #sidebar-toggle { display: none; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    // cria o botão se ainda não existe
+    if (!document.getElementById('sidebar-toggle')) {
+      var btn = document.createElement('button');
+      btn.id = 'sidebar-toggle';
+      btn.setAttribute('aria-label','Alternar barra lateral');
+      btn.innerText = '☰ Menu';
+      document.body.appendChild(btn);
+
+      btn.addEventListener('click', function(){
+        document.body.classList.toggle('sidebar-collapsed');
+        localStorage.setItem('jtd-sidebar-collapsed',
+          document.body.classList.contains('sidebar-collapsed')
+        );
+      });
+
+      // restaura preferência do usuário
+      if (localStorage.getItem('jtd-sidebar-collapsed') === 'true') {
+        document.body.classList.add('sidebar-collapsed');
+      }
+    }
+  });
+</script>
+
