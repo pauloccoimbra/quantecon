@@ -1,9 +1,77 @@
----
-title: Inscrição
-nav_order: 6
-permalink: /formulario/
----
-{% include topnav.html %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscrição</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 40px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Inscrição</h1>
+    <form action="processa-inscricao.php" method="POST">
+      <label for="nome">Nome completo:</label>
+      <input type="text" id="nome" name="nome" required>
 
-# Inscrição
-Conteúdo da página “Inscrição”.
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="curso">Curso de interesse:</label>
+      <select id="curso" name="curso" required>
+        <option value="">Selecione...</option>
+        <option value="economia">Economia</option>
+        <option value="dados">Ciência de Dados</option>
+        <option value="programacao">Programação</option>
+      </select>
+
+      <label for="mensagem">Mensagem (opcional):</label>
+      <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+      <button type="submit">Enviar inscrição</button>
+    </form>
+  </div>
+</body>
+</html>
