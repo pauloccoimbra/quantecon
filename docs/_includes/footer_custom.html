@@ -1,0 +1,19 @@
+<script>
+(function(){
+  var KEY = 'jtd-sidebar-collapsed::{{ site.baseurl }}';
+
+  // restaura preferência
+  if (localStorage.getItem(KEY) === 'true') {
+    document.body.classList.add('sidebar-collapsed');
+  }
+
+  // liga o botão (já está no DOM via topnav.html)
+  var btn = document.getElementById('sidebar-toggle');
+  if (btn) {
+    btn.addEventListener('click', function(){
+      document.body.classList.toggle('sidebar-collapsed');
+      localStorage.setItem(KEY, document.body.classList.contains('sidebar-collapsed'));
+    });
+  }
+})();
+</script>
