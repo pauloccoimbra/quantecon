@@ -1,46 +1,41 @@
-<!-- Fontes e CSS custom do site -->
+<!-- Fontes e CSS do site -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 <style>
   /* ===== Sidebar recolhível (Just the Docs) ===== */
-  :root { --sidebar-w: 220px; }               /* ajuste a largura aqui (200–240px) */
+  :root { --sidebar-w: 220px; }  /* ajuste para 200/240px se quiser */
 
   /* Largura padrão da sidebar e recuo do conteúdo (desktop) */
   @media (min-width: 66rem) {
-    .side-bar { width: var(--sidebar-w); }
-    .main     { margin-left: var(--sidebar-w); }
+    .side-bar            { width: var(--sidebar-w); }
+    .main-content-wrap   { margin-left: var(--sidebar-w); } /* << CORRETO no JTD */
   }
 
-  /* Animação suave ao recolher/expandir */
-  .side-bar, .main { transition: margin-left .2s ease, transform .2s ease; }
+  /* Animação suave */
+  .side-bar, .main-content-wrap {
+    transition: margin-left .2s ease, transform .2s ease;
+  }
 
   /* Estado recolhido */
-  body.sidebar-collapsed .side-bar { transform: translateX(-100%); }
-  body.sidebar-collapsed .main     { margin-left: 0 !important; }
+  body.sidebar-collapsed .side-bar          { transform: translateX(-100%); }
+  body.sidebar-collapsed .main-content-wrap { margin-left: 0 !important; }
 
-  /* Botão para alternar sidebar (desktop; no mobile o JTD já tem menu próprio) */
-  #sidebar-toggle {
-    position: fixed;
-    top: .75rem;
-    left: calc(var(--sidebar-w) + .75rem);   /* aparece à direita da sidebar aberta */
+  /* Botão (desktop; no mobile o JTD já tem menu) */
+  #sidebar-toggle{
+    position: fixed; top: .75rem; left: calc(var(--sidebar-w) + .75rem);
     z-index: 1000;
     border: 1px solid var(--color-border, #c8c8c8);
     background: var(--color-canvas, #fff);
     color: var(--color-fg-default, inherit);
-    border-radius: .5rem;
-    padding: .35rem .6rem;
-    cursor: pointer;
+    border-radius: .5rem; padding: .35rem .6rem; cursor: pointer;
   }
-  body.sidebar-collapsed #sidebar-toggle { left: .75rem; }  /* encosta na borda quando recolhida */
-
-  /* Em telas menores, esconda: o JTD já gerencia o menu */
-  @media (max-width: 66rem) { #sidebar-toggle { display: none; } }
+  body.sidebar-collapsed #sidebar-toggle{ left: .75rem; }
+  @media (max-width: 66rem){ #sidebar-toggle{ display:none; } }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-    // cria o botão se ainda não existir
     if (!document.getElementById('sidebar-toggle')) {
       var btn = document.createElement('button');
       btn.id = 'sidebar-toggle';
@@ -48,15 +43,10 @@
       btn.textContent = '☰ Menu';
       document.body.appendChild(btn);
 
-      // chave única por site (evita conflito se tiver mais projetos)
       var KEY = 'jtd-sidebar-collapsed::{{ site.baseurl }}';
-
-      // restaura preferência
       if (localStorage.getItem(KEY) === 'true') {
         document.body.classList.add('sidebar-collapsed');
       }
-
-      // alterna e salva
       btn.addEventListener('click', function(){
         document.body.classList.toggle('sidebar-collapsed');
         localStorage.setItem(KEY, document.body.classList.contains('sidebar-collapsed'));
