@@ -7,7 +7,7 @@ permalink: /
 {% include topnav.html %}
 
 <div class="qe-hero">
-  <img src="{{ '/assets/Paulo_C_Coimbra_Academy_logo.jpg' | relative_url }}" alt="Paulo C. Coimbra Academy" class="qe-logo">
+  <img src="{{ '/assets/capa-quaantecon.png' | relative_url }}" alt="QuantEcon" class="qe-logo">
   <h1>QuantEcon — Ciência de Dados e IA aplicados à Economia e Finanças</h1>
   <p>Projeto de extensão da UFJF coordenado pelo Prof. Paulo C. Coimbra</p>
   <p><a class="btn btn-primary" href="{{ '/sobre/' | relative_url }}">Conheça o projeto</a></p>
