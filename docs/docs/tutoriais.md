@@ -1,3 +1,10 @@
+---
+title: Tutorial
+nav_order: 5
+permalink: /tutorial/
+---
+{% include topnav.html %}
+
 # Tutoriais técnicos
 
 Passo a passo com notebooks interativos e vídeos explicativos.
