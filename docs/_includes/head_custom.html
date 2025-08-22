@@ -1,56 +1,37 @@
-<!-- Fontes e CSS do site -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 <style>
-  /* ===== Sidebar recolhível (Just the Docs) ===== */
-  :root { --sidebar-w: 220px; }  /* ajuste para 200/240px se quiser */
+  /* ===== Sidebar (largura + recolher) ===== */
+  :root { --sidebar-w: 220px; } /* ajuste p/ 200–240px se quiser */
 
-  /* Largura padrão da sidebar e recuo do conteúdo (desktop) */
+  /* Layout desktop */
   @media (min-width: 66rem) {
-    .side-bar            { width: var(--sidebar-w); }
-    .main-content-wrap   { margin-left: var(--sidebar-w); } /* << CORRETO no JTD */
+    .side-bar          { width: var(--sidebar-w); }
+    .main-content-wrap { margin-left: var(--sidebar-w); }
   }
 
   /* Animação suave */
-  .side-bar, .main-content-wrap {
-    transition: margin-left .2s ease, transform .2s ease;
-  }
+  .side-bar, .main-content-wrap { transition: margin-left .2s ease, transform .2s ease; }
 
   /* Estado recolhido */
   body.sidebar-collapsed .side-bar          { transform: translateX(-100%); }
   body.sidebar-collapsed .main-content-wrap { margin-left: 0 !important; }
 
-  /* Botão (desktop; no mobile o JTD já tem menu) */
-  #sidebar-toggle{
-    position: fixed; top: .75rem; left: calc(var(--sidebar-w) + .75rem);
-    z-index: 1000;
-    border: 1px solid var(--color-border, #c8c8c8);
-    background: var(--color-canvas, #fff);
-    color: var(--color-fg-default, inherit);
-    border-radius: .5rem; padding: .35rem .6rem; cursor: pointer;
+  /* Botão integrado ao cabeçalho do tema (discreto) */
+  .sidebar-toggle{
+    display: none;
   }
-  body.sidebar-collapsed #sidebar-toggle{ left: .75rem; }
-  @media (max-width: 66rem){ #sidebar-toggle{ display:none; } }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function(){
-    if (!document.getElementById('sidebar-toggle')) {
-      var btn = document.createElement('button');
-      btn.id = 'sidebar-toggle';
-      btn.setAttribute('aria-label','Alternar barra lateral');
-      btn.textContent = '☰ Menu';
-      document.body.appendChild(btn);
-
-      var KEY = 'jtd-sidebar-collapsed::{{ site.baseurl }}';
-      if (localStorage.getItem(KEY) === 'true') {
-        document.body.classList.add('sidebar-collapsed');
-      }
-      btn.addEventListener('click', function(){
-        document.body.classList.toggle('sidebar-collapsed');
-        localStorage.setItem(KEY, document.body.classList.contains('sidebar-collapsed'));
-      });
+  @media (min-width: 66rem) {
+    .sidebar-toggle{
+      display: inline-flex; align-items: center; gap: .25rem;
+      font: inherit; padding: .3rem .55rem; margin-left: .5rem;
+      background: transparent; color: inherit;
+      border: 1px solid var(--color-border, #3a3a3a);
+      border-radius: .375rem; cursor: pointer;
     }
-  });
-</script>
+    .sidebar-toggle:hover{
+      background: var(--color-canvas-subtle, rgba(255,255,255,.04));
+    }
+  }
+</style>
