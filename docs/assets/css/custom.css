@@ -1,36 +1,80 @@
 :root { --qe-max: 1100px; }
 
-.qe-header {
+/* Header / Nav */
+.qe-header{
   display:flex; align-items:center; gap:1rem;
-  justify-content:space-between; padding:0.75rem 1rem; margin:0 auto;
+  justify-content:space-between; padding:.75rem 1rem; margin:0 auto;
   max-width:var(--qe-max);
 }
-.qe-header .logo { width:44px; height:auto; border-radius:6px; }
-.qe-nav a {
+.qe-header .logo{ width:44px; height:auto; border-radius:6px; }
+.qe-nav a{
   margin:0 .4rem; text-decoration:none;
   padding:.35rem .6rem; border-radius:.4rem;
 }
-.qe-nav a.ativo { outline:1px solid var(--color-border,#ccc); }
+.qe-nav a.ativo{ outline:1px solid var(--color-border, #444); }
 
-.qe-hero {
+/* Hero */
+.qe-hero{
   text-align:center; padding:2.5rem 1rem 2rem;
   margin:0 auto 1rem; max-width:var(--qe-max);
   font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-.qe-logo { width:120px; height:auto; border-radius:8px; margin-bottom:.75rem; }
-.qe-hero h1 { margin:.25rem 0 .5rem; font-weight:700; }
-.qe-hero p { margin:.25rem 0 .75rem; }
+.qe-logo{ width:120px; height:auto; border-radius:8px; margin-bottom:.75rem; }
+.qe-hero h1{ margin:.25rem 0 .5rem; font-weight:700; }
+.qe-hero p{ margin:.25rem 0 .75rem; }
 
-/* Cards integrados ao tema */
+/* Grid dos cards */
+.qe-cards{
+  display:grid; gap:1rem;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  margin:0 auto 2rem; max-width:var(--qe-max);
+}
+
+/* ===== Cards integrados ao tema ===== */
+/* Base — sem “branco” por padrão */
 .qe-card{
   padding:1rem;
-  background: transparent;                  /* usa a mesma cor de fundo do site */
-  border:1px solid rgba(128,128,128,.35);   /* borda sutil, visível no dark */
   border-radius:.5rem;
-  color: inherit;                            /* garante contraste do texto */
+  color: inherit;
+  background: transparent;                /* usa o fundo do site */
+  border: 1px solid var(--color-border, #444);
 }
-.qe-card h3{ color: inherit; }
-.qe-card a{ color: var(--link-color, inherit); text-decoration: none; }
+
+/* Dark: leve filme para destacar sem “placa branca” */
+html[data-theme="dark"] .qe-card{
+  background: rgba(255,255,255,.05);      /* bem discreto */
+  border-color: rgba(255,255,255,.18);
+}
+
+/* Light: usa branco suave */
+html[data-theme="light"] .qe-card{
+  background: #fff;
+  border-color: #e5e7eb;
+}
+
+/* Títulos e texto com contraste do tema */
+.qe-card h3{ margin-top:.25rem; color: inherit; }
+
+/* Links visíveis nos cards (com fallback) */
+.qe-card a{
+  color: var(--link-color, #58a6ff);
+  text-decoration: none;
+}
 .qe-card a:hover{ text-decoration: underline; }
 
-.qe-footer { text-align:center; margin:2rem auto 0; max-width:var(--qe-max); opacity:.85; }
+/* “Botão” primário (para o link destacado) */
+.btn.btn-primary{
+  display:inline-block;
+  padding:.45rem .8rem; border-radius:.5rem;
+  border:1px solid var(--color-btn-primary-border, rgba(31,111,235,.5));
+  background: var(--color-btn-primary-bg, #1f6feb);
+  color: var(--color-btn-primary-text, #fff) !important;
+}
+.btn.btn-primary:hover{
+  filter: brightness(1.05);
+}
+
+/* Rodapé */
+.qe-footer{
+  text-align:center; margin:2rem auto 0; max-width:var(--qe-max); opacity:.9;
+}
