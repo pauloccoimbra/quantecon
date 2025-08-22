@@ -2,28 +2,33 @@
 (function(){
   var KEY = 'jtd-sidebar-collapsed::{{ site.baseurl }}';
 
-  // Restaura preferência
-  if (localStorage.getItem(KEY) === 'true') {
-    document.body.classList.add('sidebar-collapsed');
-  }
-
-  // Insere o botão "☰" no cabeçalho do Just the Docs
-  document.addEventListener('DOMContentLoaded', function(){
-    var header = document.querySelector('.site-header');
-    if (!header) return;
-
+  function ensureButton(){
+    if (document.getElementById('jtd-sidebar-toggle')) return;
     var btn = document.createElement('button');
-    btn.className = 'sidebar-toggle';
+    btn.id = 'jtd-sidebar-toggle';
     btn.type = 'button';
     btn.setAttribute('aria-label','Alternar barra lateral');
-    btn.textContent = '☰'; // rótulo pedido
-    header.appendChild(btn);
+    btn.textContent = '☰';           // rótulo pedido
+    document.body.appendChild(btn);
 
+    // restaura preferência
+    if (localStorage.getItem(KEY) === 'true') {
+      document.body.classList.add('sidebar-collapsed');
+    }
+
+    // alterna e salva
     btn.addEventListener('click', function(){
       document.body.classList.toggle('sidebar-collapsed');
       localStorage.setItem(KEY, document.body.classList.contains('sidebar-collapsed'));
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureButton);
+  } else {
+    ensureButton();
+  }
 })();
 </script>
+
 
