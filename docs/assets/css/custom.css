@@ -74,7 +74,15 @@ html[data-theme="light"] .qe-card{
   filter: brightness(1.05);
 }
 
-/* Rodapé */
+/* Nota de rodapé menor e mais discreta */
 .qe-footer{
-  text-align:center; margin:2rem auto 0; max-width:var(--qe-max); opacity:.9;
+  font-size: 0.85rem;      /* ~14px; pode usar 0.8rem se quiser menor */
+  line-height: 1.4;
+  opacity: .75;            /* um pouco mais suave */
 }
+
+/* (opcional) reduzir também o rodapé nativo do tema, se estiver usando */
+.site-footer {
+  font-size: 0.85rem;
+}
+
