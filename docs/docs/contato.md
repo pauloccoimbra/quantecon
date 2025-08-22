@@ -1,3 +1,10 @@
+---
+title: Contato
+nav_order: 7
+permalink: /contato/
+---
+{% include topnav.html %}
+
 # Contato institucional
 
 Para dúvidas, sugestões ou parcerias:
