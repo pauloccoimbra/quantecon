@@ -2,49 +2,43 @@
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 <style>
-  /* ===== Sidebar (largura + recolher) ===== */
-  :root { --sidebar-w: 200px; } /* largura pedida */
+  /* ===== Sidebar 200px + expansão real do conteúdo ===== */
+  :root { --sidebar-w: 200px; }
 
-  /* Layout desktop */
+  /* Largura da sidebar e recuo do conteúdo (desktop) */
   @media (min-width: 66rem) {
     .side-bar { width: var(--sidebar-w); }
-    /* o JTD usa .main-content-wrap (e alguns builds também têm .main) */
-    .main-content-wrap, .main { margin-left: var(--sidebar-w); }
+    .main, .main-content-wrap { margin-left: var(--sidebar-w); }
+    .main-content { max-width: none; } /* ocupa toda a largura disponível */
   }
 
-  /* Animação suave */
-  .side-bar, .main-content-wrap, .main { transition: margin-left .2s ease, transform .2s ease; }
+  /* Transições suaves */
+  .side-bar, .main, .main-content-wrap { transition: margin-left .2s ease, transform .2s ease; }
 
-  /* Estado recolhido: sidebar fora, conteúdo sem recuo E sem limite de largura  */
+  /* Estado recolhido: sidebar fora da tela e conteúdo SEM margem e SEM limite */
   body.sidebar-collapsed .side-bar { transform: translateX(-100%); }
-  body.sidebar-collapsed .main-content-wrap,
-  body.sidebar-collapsed .main {
-    margin-left: 0 !important;
-  }
-  /* Expansão real (remove max-width/limites do tema quando recolhida) */
-  body.sidebar-collapsed .main-content,
-  body.sidebar-collapsed .main-content-wrap,
-  body.sidebar-collapsed .main {
-    max-width: none !important;
-    width: auto;
-  }
+  body.sidebar-collapsed .main, 
+  body.sidebar-collapsed .main-content-wrap { margin-left: 0 !important; }
+  body.sidebar-collapsed .main-content { max-width: none !important; }
 
-  /* Botão integrado ao cabeçalho do tema (discreto) */
-  .sidebar-toggle{
-    display: none;
+  /* Botão fixo e discreto — sempre visível */
+  #jtd-sidebar-toggle{
+    position: fixed; top: .75rem; z-index: 1000;
+    width: 2.1rem; height: 2.1rem; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--color-border, #3a3a3a);
+    background: var(--color-canvas, #111);
+    color: var(--color-fg-default, #fff);
+    border-radius: .375rem; cursor: pointer; line-height: 1;
   }
+  /* Posição do botão: encostado à esquerda quando recolhido, à direita da sidebar quando aberta */
+  body.sidebar-collapsed #jtd-sidebar-toggle { left: .75rem; }
   @media (min-width: 66rem) {
-    .sidebar-toggle{
-      display: inline-flex; align-items: center; justify-content:center;
-      width: 2.1rem; height: 2.1rem; padding: 0;
-      font: inherit; line-height: 1; 
-      background: transparent; color: inherit;
-      border: 1px solid var(--color-border, #3a3a3a);
-      border-radius: .375rem; cursor: pointer;
-      margin-left: .5rem;
-    }
-    .sidebar-toggle:hover{
-      background: var(--color-canvas-subtle, rgba(255,255,255,.06));
-    }
+    body:not(.sidebar-collapsed) #jtd-sidebar-toggle { left: calc(var(--sidebar-w) + .75rem); }
+  }
+  @media (max-width: 66rem) {
+    /* Em telas pequenas o próprio tema já tem menu; escondemos nosso botão */
+    #jtd-sidebar-toggle { display: none; }
   }
 </style>
+
