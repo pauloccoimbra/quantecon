@@ -2,11 +2,10 @@ title: "QuantEcon — UFJF"
 description: "Ciência de Dados e IA aplicados à Economia e Finanças"
 
 remote_theme: just-the-docs/just-the-docs
-plugins:
-  - jekyll-remote-theme
+plugins: [jekyll-remote-theme]
 
 url: "https://pauloccoimbra.github.io"
-baseurl: "/quantecon"   # obrigatório p/ site de projeto
+baseurl: "/quantecon"
 
 color_scheme: dark
 logo: "/quantecon/assets/Paulo_C_Coimbra_Academy_logo.jpg"
@@ -14,13 +13,9 @@ logo: "/quantecon/assets/Paulo_C_Coimbra_Academy_logo.jpg"
 search_enabled: true
 aux_links:
   "LinkedIn — Página": https://linkedin.com/company/quantecon-ufjf
-  "LinkedIn — Grupo": https://linkedin.com/groups/quant-econ-ufjf
   "GitHub": https://github.com/ufjf-quantecon
-  "Contato institucional": mailto:extensao_quantecon@ufjf.br
 aux_links_new_tab: true
 
 permalink: pretty
-sass:
-  style: compressed
+sass: { style: compressed }
 
-    
