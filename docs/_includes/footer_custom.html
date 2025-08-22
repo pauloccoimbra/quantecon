@@ -1,32 +1,34 @@
 <script>
 (function(){
-  var KEY = 'jtd-sidebar-collapsed::{{ site.baseurl }}';
+  var KEY = 'jtd-sidebar-hidden::{{ site.baseurl }}';
 
-  function mountButton(){
-    if (document.getElementById('jtd-sidebar-toggle')) return;
-    var btn = document.createElement('button');
-    btn.id = 'jtd-sidebar-toggle';
-    btn.type = 'button';
-    btn.setAttribute('aria-label','Alternar barra lateral');
-    btn.textContent = '☰';             // rótulo pedido
-    document.body.appendChild(btn);
+  function mount(){
+    // cria o botão se não existir
+    if (!document.getElementById('jtd-sidebar-toggle')){
+      var b = document.createElement('button');
+      b.id = 'jtd-sidebar-toggle';
+      b.type = 'button';
+      b.setAttribute('aria-label','Alternar barra lateral');
+      b.textContent = '☰';
+      document.body.appendChild(b);
 
-    // Restaura preferência
-    if (localStorage.getItem(KEY) === 'true') {
-      document.body.classList.add('sidebar-collapsed');
+      // restaura preferência
+      if (localStorage.getItem(KEY) === 'true'){
+        document.body.classList.add('sidebar-hidden');
+      }
+
+      // alterna e salva
+      b.addEventListener('click', function(){
+        document.body.classList.toggle('sidebar-hidden');
+        localStorage.setItem(KEY, document.body.classList.contains('sidebar-hidden'));
+      });
     }
-
-    // Alterna e salva
-    btn.addEventListener('click', function(){
-      document.body.classList.toggle('sidebar-collapsed');
-      localStorage.setItem(KEY, document.body.classList.contains('sidebar-collapsed'));
-    });
   }
 
   if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', mountButton);
+    document.addEventListener('DOMContentLoaded', mount);
   } else {
-    mountButton();
+    mount();
   }
 })();
 </script>
