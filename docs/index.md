@@ -1,69 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuantEcon — UFJF</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header>
-    <img src="assets/Paulo_C_Coimbra_Academy_logo.jpg" alt="Paulo C. Coimbra Academy" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="minicurso.html">Minicurso</a></li>
-        <li><a href="boletim.html">Boletim</a></li>
-        <li><a href="tutorial.html">Tutorial</a></li>
-        <li><a href="formulario.html">Inscrição</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+title: Início
+nav_order: 1
+permalink: /
+---
 
-  <main>
-    <section class="hero">
-      <h1>QuantEcon — Ciência de Dados e IA aplicados à Economia e Finanças</h1>
-      <p>Projeto de extensão da UFJF coordenado pelo Prof. Paulo C. Coimbra</p>
-      <a href="sobre.html" class="btn">Conheça o projeto</a>
-    </section>
+<div class="qe-hero">
+  <img src="{{ '/assets/Paulo_C_Coimbra_Academy_logo.jpg' | relative_url }}" alt="Paulo C. Coimbra Academy" class="qe-logo">
+  <h1>QuantEcon — Ciência de Dados e IA aplicados à Economia e Finanças</h1>
+  <p>Projeto de extensão da UFJF coordenado pelo Prof. Paulo C. Coimbra</p>
+  <p>
+    <a class="btn btn-primary" href="{{ '/docs/sobre' | relative_url }}">Conheça o projeto</a>
+  </p>
+</div>
 
-    <section class="destaques">
-      <h2>Destaques</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>📊 Boletim Econômico</h3>
-          <p>Visualizações interativas e análises semanais</p>
-          <a href="boletim.html">Ver boletim</a>
-        </div>
-        <div class="card">
-          <h3>🎓 Minicurso Python</h3>
-          <p>Trilha formativa com certificado</p>
-          <a href="minicurso.html">Acessar minicurso</a>
-        </div>
-        <div class="card">
-          <h3>🧪 Tutorial IA</h3>
-          <p>Notebooks interativos com passo a passo</p>
-          <a href="tutorial.html">Ver tutorial</a>
-        </div>
-      </div>
-    </section>
-  </main>
+## Destaques
 
-  <footer>
-    <p>Projeto de Extensão | Universidade Federal de Juiz de Fora  -  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> - Licença MIT</p>
-  </footer>
+<div class="qe-cards">
+  <div class="qe-card">
+    <h3>📊 Boletim Econômico</h3>
+    <p>Visualizações interativas e análises semanais</p>
+    <p><a class="btn" href="{{ '/docs/boletins' | relative_url }}">Ver boletim</a></p>
+  </div>
+  <div class="qe-card">
+    <h3>🎓 Minicurso Python</h3>
+    <p>Trilha formativa com certificado</p>
+    <p><a class="btn" href="{{ '/docs/minicursos' | relative_url }}">Acessar minicurso</a></p>
+  </div>
+  <div class="qe-card">
+    <h3>🧪 Tutorial IA</h3>
+    <p>Notebooks interativos com passo a passo</p>
+    <p><a class="btn" href="{{ '/docs/tutoriais' | relative_url }}">Ver tutorial</a></p>
+  </div>
+</div>
 
-  <script>
-    // Destacar página atual no menu
-    const links = document.querySelectorAll("nav a");
-    links.forEach(link => {
-      if (link.href === window.location.href) {
-        link.classList.add("ativo");
-      }
-    });
-  </script>
-</body>
-</html>
+---
+
+<p class="qe-footer">
+  Projeto de Extensão | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
