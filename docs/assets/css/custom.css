@@ -76,13 +76,16 @@ html[data-theme="light"] .qe-card{
 
 /* Nota de rodapé menor e mais discreta */
 .qe-footer{
-  font-size: 0.85rem;      /* ~14px; pode usar 0.8rem se quiser menor */
+  font-size: 0.75rem;      /* ~14px; pode usar 0.8rem se quiser menor */
   line-height: 1.4;
-  opacity: .75;            /* um pouco mais suave */
+  opacity: .7;            /* um pouco mais suave */
 }
 
-/* (opcional) reduzir também o rodapé nativo do tema, se estiver usando */
-.site-footer {
-  font-size: 0.85rem;
+/* Nota de rodapé menor/discreta */
+.qe-footer { font-size: 0.8rem; line-height: 1.4; opacity: .7; }
+
+/* Se quiser reduzir também o rodapé nativo do tema: */
+.site-footer, .site-footer p, .site-footer a { 
+  font-size: 0.8rem; 
 }
 
