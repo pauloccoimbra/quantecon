@@ -1,3 +1,11 @@
+---
+title: Início
+nav_order: 1
+permalink: /
+---
+
+{% include topnav.html %}
+
 # QuantEcon — Ciência de Dados e IA aplicados à Economia e Finanças
 
 ![Imagem de capa do projeto QuantEcon](https://github.com/ufjf-quantecon/assets/capa-quantecon.png)
