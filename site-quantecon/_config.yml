@@ -1,39 +1,51 @@
-title: QuantEcon — UFJF
-description: Ciência de Dados e IA aplicados à Economia e Finanças
+# -- Site
+title: "QuantEcon — UFJF"
+description: "Ciência de Dados e IA aplicados à Economia e Finanças"
 
-remote_theme: pages-themes/slate
-plugins: [jekyll-remote-theme]
-
-color_scheme: "dark"
-logo: "/assets/Paulo_C_Coimbra_Academy_logo.jpg"
-
+# URL do usuário + baseurl do repositório de projeto
 url: "https://pauloccoimbra.github.io"
-baseurl: "/"
+baseurl: "/quantecon"   # importante para sites de projeto (repo != username.github.io)
 
+# -- Tema (GitHub Pages via remote_theme)
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+# -- Visual
+color_scheme: dark       # "light" (padrão) ou "dark"
+logo: "/assets/Paulo_C_Coimbra_Academy_logo.jpg"   # caminho relativo ao site
+
+# -- Busca
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  rel_url: true
+  button: false          # mude para true se quiser o botão flutuante de busca
+
+# -- Links auxiliares no topo (botão/links à direita)
 aux_links:
   "LinkedIn — Página": https://linkedin.com/company/quantecon-ufjf
   "LinkedIn — Grupo": https://linkedin.com/groups/quant-econ-ufjf
   "GitHub": https://github.com/ufjf-quantecon
   "Contato institucional": mailto:extensao_quantecon@ufjf.br
+aux_links_new_tab: true   # abre em nova aba
 
+# -- Opções diversas
+permalink: pretty
 sass:
   style: compressed
-  
-nav:
-  - title: "Início"
-    url: "/docs/index"
-  - title: "Sobre"
-    url: "/docs/sobre"
-  - title: "Boletins"
-    url: "/docs/boletins"
-  - title: "Minicursos"
-    url: "/docs/minicursos"
-  - title: "Tutoriais"
-    url: "/docs/tutoriais"
-  - title: "Resultados"
-    url: "/docs/resultados"
-  - title: "Comunicados"
-    url: "/docs/comunicados"
-  - title: "Contato"
-    url: "/docs/contato"
+
+# -- (Opcional) Link “Edite esta página no GitHub”
+# gh_edit_link: true
+# gh_edit_link_text: "Edite esta página no GitHub"
+# gh_edit_repository: "https://github.com/pauloccoimbra/quantecon"
+# gh_edit_branch: "main"
+# gh_edit_view_mode: "tree"
+
+# -- (Opcional) Rodapé simples
+# footer_content: "© ${year} QuantEcon — UFJF"
+
     
