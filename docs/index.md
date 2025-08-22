@@ -4,6 +4,15 @@ nav_order: 1
 permalink: /
 ---
 
+{% include topnav.html %}
+
+<div class="qe-hero">
+  <img src="{{ '/assets/Paulo_C_Coimbra_Academy_logo.jpg' | relative_url }}" alt="Paulo C. Coimbra Academy" class="qe-logo">
+  <h1>QuantEcon — Ciência de Dados e IA aplicados à Economia e Finanças</h1>
+  <p>Projeto de extensão da UFJF coordenado pelo Prof. Paulo C. Coimbra</p>
+  <p><a class="btn btn-primary" href="{{ '/sobre/' | relative_url }}">Conheça o projeto</a></p>
+</div>
+
 ## Destaques
 
 <div class="qe-cards">
@@ -30,4 +39,3 @@ permalink: /
   Projeto de Extensão | Universidade Federal de Juiz de Fora — 
   Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
 </p>
-
