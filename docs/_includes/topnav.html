@@ -1,0 +1,24 @@
+<header class="qe-header">
+  <a href="{{ '/' | relative_url }}" class="qe-logo-link">
+    <img src="{{ '/assets/Paulo_C_Coimbra_Academy_logo.jpg' | relative_url }}" alt="Paulo C. Coimbra Academy" class="logo">
+  </a>
+  <nav class="qe-nav">
+    <a href="{{ '/' | relative_url }}">Início</a>
+    <a href="{{ '/sobre/' | relative_url }}">Sobre</a>
+    <a href="{{ '/minicurso/' | relative_url }}">Minicurso</a>
+    <a href="{{ '/boletim/' | relative_url }}">Boletim</a>
+    <a href="{{ '/tutorial/' | relative_url }}">Tutorial</a>
+    <a href="{{ '/formulario/' | relative_url }}">Inscrição</a>
+    <a href="{{ '/contato/' | relative_url }}">Contato</a>
+  </nav>
+</header>
+<script>
+(function(){
+  var base='{{ site.baseurl }}';
+  var here = location.pathname.replace(base,'').replace(/\/+$/,'');
+  document.querySelectorAll('.qe-nav a').forEach(function(a){
+    var target = a.getAttribute('href').replace(base,'').replace(/\/+$/,'');
+    if (target === here) a.classList.add('ativo');
+  });
+})();
+</script>
