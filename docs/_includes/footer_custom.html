@@ -7,7 +7,7 @@
     document.body.classList.add('sidebar-collapsed');
   }
 
-  // Insere o botão no cabeçalho do Just the Docs
+  // Insere o botão "☰" no cabeçalho do Just the Docs
   document.addEventListener('DOMContentLoaded', function(){
     var header = document.querySelector('.site-header');
     if (!header) return;
@@ -16,7 +16,7 @@
     btn.className = 'sidebar-toggle';
     btn.type = 'button';
     btn.setAttribute('aria-label','Alternar barra lateral');
-    btn.innerHTML = '☰ Menu';
+    btn.textContent = '☰'; // rótulo pedido
     header.appendChild(btn);
 
     btn.addEventListener('click', function(){
@@ -26,3 +26,4 @@
   });
 })();
 </script>
+
