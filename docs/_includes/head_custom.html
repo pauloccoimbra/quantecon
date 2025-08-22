@@ -2,28 +2,41 @@
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 <style>
-  /* ===== Sidebar 200px + expansão real do conteúdo ===== */
-  :root { --sidebar-w: 200px; }
+  /* ===== Layout: Sidebar + Conteúdo ===== */
 
-  /* Largura da sidebar e recuo do conteúdo (desktop) */
-  @media (min-width: 66rem) {
-    .side-bar { width: var(--sidebar-w); }
-    .main, .main-content-wrap { margin-left: var(--sidebar-w); }
-    .main-content { max-width: none; } /* ocupa toda a largura disponível */
+  /* Ajustes principais */
+  :root{
+    --sidebar-w: 200px;      /* largura da sidebar (pedido) */
+    --content-max: none;     /* FULL-WIDTH por padrão.
+                                >> OPCIONAL: troque para 1200px se quiser limitar <<
+                                ex.: --content-max: 1200px; */
   }
 
+  /* Sidebar e recuo do conteúdo (desktop) */
+  @media (min-width: 66rem){
+    .side-bar{ width: var(--sidebar-w); }
+    .main, .main-content-wrap{ margin-left: var(--sidebar-w); }
+  }
+
+  /* Conteúdo SEM limite de largura (full-width)
+     (respeita --content-max se você trocar para 1200px) */
+  .main-content{ max-width: var(--content-max) !important; }
+  .main-content, .main-content-wrap, .main{ width: auto; }
+
   /* Transições suaves */
-  .side-bar, .main, .main-content-wrap { transition: margin-left .2s ease, transform .2s ease; }
+  .side-bar, .main, .main-content-wrap{ transition: margin-left .2s ease, transform .2s ease; }
 
-  /* Estado recolhido: sidebar fora da tela e conteúdo SEM margem e SEM limite */
-  body.sidebar-collapsed .side-bar { transform: translateX(-100%); }
+  /* Estado recolhido: sidebar fora e conteúdo ocupando TUDO */
+  body.sidebar-collapsed .side-bar{ transform: translateX(-100%); }
   body.sidebar-collapsed .main, 
-  body.sidebar-collapsed .main-content-wrap { margin-left: 0 !important; }
-  body.sidebar-collapsed .main-content { max-width: none !important; }
+  body.sidebar-collapsed .main-content-wrap{ margin-left: 0 !important; }
+  body.sidebar-collapsed .main-content{ max-width: var(--content-max) !important; }
 
-  /* Botão fixo e discreto — sempre visível */
+  /* ===== Botão “☰” (fixo, discreto) ===== */
   #jtd-sidebar-toggle{
-    position: fixed; top: .75rem; z-index: 1000;
+    position: fixed;
+    top: .75rem; left: .75rem;
+    z-index: 9999;
     width: 2.1rem; height: 2.1rem; padding: 0;
     display: inline-flex; align-items: center; justify-content: center;
     border: 1px solid var(--color-border, #3a3a3a);
@@ -31,14 +44,16 @@
     color: var(--color-fg-default, #fff);
     border-radius: .375rem; cursor: pointer; line-height: 1;
   }
-  /* Posição do botão: encostado à esquerda quando recolhido, à direita da sidebar quando aberta */
-  body.sidebar-collapsed #jtd-sidebar-toggle { left: .75rem; }
-  @media (min-width: 66rem) {
-    body:not(.sidebar-collapsed) #jtd-sidebar-toggle { left: calc(var(--sidebar-w) + .75rem); }
+  /* Posiciona o botão à direita da sidebar quando aberta (desktop) */
+  @media (min-width: 66rem){
+    body:not(.sidebar-collapsed) #jtd-sidebar-toggle{
+      left: calc(var(--sidebar-w) + .75rem);
+    }
   }
-  @media (max-width: 66rem) {
-    /* Em telas pequenas o próprio tema já tem menu; escondemos nosso botão */
-    #jtd-sidebar-toggle { display: none; }
+  /* Em telas pequenas, o JTD já oferece menu próprio: esconda o botão */
+  @media (max-width: 66rem){
+    #jtd-sidebar-toggle{ display: none; }
   }
 </style>
+
 
