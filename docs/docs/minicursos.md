@@ -1,3 +1,10 @@
+---
+title: Minicurso
+nav_order: 3
+permalink: /minicurso/
+---
+{% include topnav.html %}
+
 # Minicursos
 
 Trilhas formativas com certificado, voltadas para temas como:
