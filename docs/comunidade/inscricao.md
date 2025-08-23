@@ -5,5 +5,5 @@ parent: Comunidade
 permalink: /comunidade/inscricao/
 ---
 
-# Inscrição de discentes
+# Inscrição de voluntários
 Processo seletivo, vagas, critérios e cronograma.
