@@ -2,7 +2,7 @@
 title: Inscrição de discentes
 nav_order: 43
 parent: Comunidade
-permalink: /comunidade/inscricao-discentes/
+permalink: /comunidade/inscricao/
 ---
 
 # Inscrição de discentes
