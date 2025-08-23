@@ -1,6 +1,6 @@
 ---
 title: Contato
-nav_order: 7
+nav_order: 70
 permalink: /contato/
 ---
 {% include topnav.html %}
