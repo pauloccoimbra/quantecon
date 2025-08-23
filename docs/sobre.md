@@ -1,9 +1,8 @@
 ---
 title: Sobre
-nav_order: 2
+nav_order: 10
 permalink: /sobre/
 ---
-{% include topnav.html %}
 
 # Sobre o projeto
 
@@ -16,3 +15,7 @@ Coordenado pelo Prof. Paulo C. Coimbra, o projeto envolve docentes, discentes e 
 - Promover capacitação em ferramentas de dados e IA
 - Divulgar resultados aplicados e histórias de dados
 - Engajar comunidade acadêmica e externa
+
+- [Equipe]({{ '/equipe/' | relative_url }})
+- [Produtos]({{ '/produtos/' | relative_url }})
+
