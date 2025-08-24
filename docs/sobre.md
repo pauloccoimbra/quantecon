@@ -21,7 +21,18 @@ Coordenado pelo Prof. Paulo C. Coimbra, o projeto envolve docentes, discentes e 
 
 - [Equipe]({{ '/equipe/' | relative_url }})
 - [Produtos]({{ '/produtos/' | relative_url }})
-
+<div class="qe-cards">
+  <div class="qe-card">
+    <h3>👥 Equipe</h3>
+    <p>Conheça a nossa equipe</p>
+    <p><a class="btn" href="{{ '/equipe/' | relative_url }}">Ver equipe</a></p>
+  </div>
+  <div class="qe-card">
+    <h3>📈 Produtos</h3>
+    <p>Conheça nossos produtos</p>
+    <p><a class="btn" href="{{ '/produtos/' | relative_url }}">Ver produtos</a></p>
+  </div>
+</div>
 ---
 
 <p class="qe-footer">
