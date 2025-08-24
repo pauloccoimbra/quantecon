@@ -9,8 +9,7 @@
 /* ===== Header / Nav (opcional) ===== */
 .qe-header{
   display:flex; align-items:center; gap:1rem;
-  justify-content:space-between; padding:.75rem 1rem;
-  margin:0;
+  justify-content:space-between; padding:.75rem 1rem; margin:0;
 }
 .qe-header .logo{ width:44px; height:auto; border-radius:6px; }
 .qe-nav a{ margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem; }
@@ -18,8 +17,7 @@
 
 /* ===== Hero ===== */
 .qe-hero{
-  text-align:center; padding:2.5rem 1rem 2rem;
-  margin:0 0 1rem 0;
+  text-align:center; padding:2.5rem 1rem 2rem; margin:0 0 1rem 0;
   font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 .qe-logo{ width:120px; height:auto; border-radius:8px; margin-bottom:.75rem; }
