@@ -1,8 +1,8 @@
 /* ===== largura global do conteúdo (seguro) ===== */
-.main-content { max-width: 1200px !important; }  /* ajuste aqui se quiser 1000/1400 etc. */
+.main-content { max-width: 1800px !important; }  /* ajuste aqui se quiser 1000/1400 etc. */
 
 /* ===== SEU ESTILO (header/nav/hero/cards/rodapé) ===== */
-:root { --qe-max: 1100px; }
+:root { --qe-max: 1800px; }
 
 /* Header / Nav */
 .qe-header{ display:flex; align-items:center; gap:1rem; justify-content:space-between; padding:.75rem 1rem; margin:0 auto; max-width:var(--qe-max); }
