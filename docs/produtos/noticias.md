@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Notícias
 nav_order: 27
 parent: Produtos
