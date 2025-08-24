@@ -7,7 +7,7 @@ plugins: [jekyll-remote-theme]
 url: "https://pauloccoimbra.github.io"
 baseurl: "/quantecon"
 
-color_scheme: light
+color_scheme: dark
 search_enabled: true
 nav_enabled: true   # garante que a navegação lateral está habilitada
 
