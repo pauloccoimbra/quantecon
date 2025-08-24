@@ -1,48 +1,38 @@
-<!-- Botão ☰ único + controlador de estado -->
+<!-- Botão ☰ + controlador de estado (sem depender de outras libs) -->
+<button id="qeToggle"
+        type="button"
+        title="Mostrar/ocultar navegação"
+        aria-label="Mostrar/ocultar navegação">☰</button>
+
 <script>
 (function () {
   function setCollapsed(on) {
     document.documentElement.classList.toggle('sidebar-collapsed', !!on);
     try { localStorage.setItem('qe_sidebar_collapsed', on ? '1' : '0'); } catch (e) {}
-    var btn = document.getElementById('sidebarToggle');
+    var btn = document.getElementById('qeToggle');
     if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
 
   // Aplica preferência salva; se nada salvo, inicia recolhida no mobile
   try {
     var saved = localStorage.getItem('qe_sidebar_collapsed');
-    var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
+    var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 767);
     setCollapsed(startCollapsed);
     // Tema claro (remova se não quiser forçar)
     localStorage.setItem('theme','light');
     document.documentElement.setAttribute('data-theme','light');
   } catch (e) {}
 
-  document.addEventListener('DOMContentLoaded', function () {
-    // Evita duplicatas de botão
-    var olds = document.querySelectorAll('#sidebarToggle');
-    for (var i = 1; i < olds.length; i++) olds[i].remove();
+  // Evita duplicatas do botão por re-render/partials
+  (function dedupe(){
+    var all = document.querySelectorAll('#qeToggle');
+    for (var i = 1; i < all.length; i++) all[i].remove();
+  })();
 
-    // Cria (ou reaproveita) o botão
-    var btn = document.getElementById('sidebarToggle');
-    if (!btn) {
-      btn = document.createElement('button');
-      btn.id = 'sidebarToggle';
-      btn.type = 'button';
-      btn.title = 'Mostrar/ocultar navegação';
-      btn.setAttribute('aria-label','Mostrar/ocultar navegação');
-      btn.textContent = '☰';
-    }
-
-    // Insere no início do header (fica no fluxo, antes da busca)
-    var header = document.querySelector('.main-header');
-    if (header && !header.contains(btn)) header.insertBefore(btn, header.firstChild);
-
-    // Clique → alterna recolhido/aberto
-    btn.addEventListener('click', function () {
-      var on = document.documentElement.classList.contains('sidebar-collapsed');
-      setCollapsed(!on);
-    });
+  // Clique → alterna recolhido/aberto
+  document.getElementById('qeToggle').addEventListener('click', function () {
+    var on = document.documentElement.classList.contains('sidebar-collapsed');
+    setCollapsed(!on);
   });
 })();
 </script>
