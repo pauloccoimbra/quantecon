@@ -1,12 +1,10 @@
 /* =========================
-   QuantEcon — custom.css (visual seguro)
-   - Não mexe em layout (sidebar/main/header)
-   - Apenas estilos visuais e componentes
+   QuantEcon — custom.css (VISUAL seguro)
+   - Não mexe em layout do tema (sidebar/main/header)
+   - Estilos de componentes e “cards”
    ========================= */
 
-:root { --qe-max: 100%; }
-
-/* ===== Header / Nav (opcional) ===== */
+/* ===== Hero / Header opcionais ===== */
 .qe-header{
   display:flex; align-items:center; gap:1rem;
   justify-content:space-between; padding:.75rem 1rem; margin:0;
@@ -15,7 +13,6 @@
 .qe-nav a{ margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem; }
 .qe-nav a.ativo{ outline:1px solid var(--color-border, #444); }
 
-/* ===== Hero ===== */
 .qe-hero{
   text-align:center; padding:2.5rem 1rem 2rem; margin:0 0 1rem 0;
   font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -24,33 +21,37 @@
 .qe-hero h1{ margin:.25rem 0 .5rem; font-weight:700; }
 .qe-hero p{ margin:.25rem 0 .75rem; }
 
-/* ===== Grid de cards ===== */
-.qe-cards{
+/* ===== Cards — suporta .cards/.card e .qe-cards/.qe-card ===== */
+.cards, .qe-cards{
   display:grid; gap:1rem;
   grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
   margin:0 16px 2rem;
 }
-
-/* ===== Cards (bom contraste light/dark) ===== */
-.qe-card{
+.card, .qe-card{
   padding:1rem; border-radius:.5rem; color:inherit;
   background:transparent; border:1px solid var(--color-border, #444);
+  box-shadow: 0 2px 5px rgba(0,0,0,.06);
+  transition: transform .2s ease;
 }
+.card:hover, .qe-card:hover{ transform: translateY(-3px); }
+html[data-theme="dark"] .card,
 html[data-theme="dark"] .qe-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.18); }
+html[data-theme="light"] .card,
 html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
-.qe-card h3{ margin-top:.25rem; color:inherit; }
-.qe-card a{ color: var(--link-color, #1f6feb); text-decoration:none; }
-.qe-card a:hover{ text-decoration:underline; }
+
+/* Links dentro de cards */
+.card a, .qe-card a{ color: var(--link-color, #1f6feb); text-decoration: none; }
+.card a:hover, .qe-card a:hover{ text-decoration: underline; }
 
 /* ===== Botão primário ===== */
-.btn.btn-primary{
+.btn, .btn.btn-primary{
   display:inline-block; padding:.45rem .8rem; border-radius:.5rem;
   border:1px solid rgba(31,111,235,.5); background:#1f6feb; color:#fff !important;
 }
-.btn.btn-primary:hover{ filter:brightness(1.05); }
+.btn:hover{ filter:brightness(1.05); }
 
 /* ===== Rodapé ===== */
-.qe-footer{ text-align:center; margin:2rem 0 0 0; font-size:.8rem; line-height:1.4; opacity:.75; }
+.qe-footer{ text-align:center; margin:2rem 0 0 0; font-size:.85rem; line-height:1.4; opacity:.8; }
 .site-footer, .site-footer p, .site-footer a { font-size: .85rem; }
 
 /* ===== Tabelas/código largos ===== */
