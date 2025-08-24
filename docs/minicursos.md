@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Minicurso
 nav_order: 3
 permalink: /minicurso/
