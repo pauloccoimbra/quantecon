@@ -1,3 +1,41 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<!-- Botão ☰ fixo para recolher/expandir a sidebar -->
+<button id="sidebarToggle"
+        title="Mostrar/ocultar navegação"
+        aria-label="Mostrar/ocultar navegação"
+        style="
+          position:fixed; top:12px; left:12px; z-index:10000;
+          width:36px; height:36px; display:grid; place-items:center;
+          border-radius:8px; border:1px solid var(--color-border, #e5e7eb);
+          background: var(--body-background, #fff); color: var(--text-color, #111);
+          box-shadow:0 2px 8px rgba(0,0,0,.08); cursor:pointer; user-select:none;
+          font-size:18px; line-height:1;
+        ">☰</button>
+
+<script>
+  // Mantém a preferência do usuário
+  (function() {
+    function setCollapsed(on){
+      document.documentElement.classList.toggle('sidebar-collapsed', !!on);
+      try { localStorage.setItem('qe_sidebar_collapsed', on ? '1' : '0'); } catch(e){}
+    }
+    try {
+      if (localStorage.getItem('qe_sidebar_collapsed') === '1') setCollapsed(true);
+    } catch(e){}
+
+    // Força o tema claro (opcional; remova se não quiser forçar)
+    try {
+      if (window.jtd && window.jtd.setTheme) { jtd.setTheme('light'); }
+      localStorage.setItem('theme','light');
+      document.documentElement.setAttribute('data-theme','light');
+    } catch(e){}
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var btn = document.getElementById('sidebarToggle');
+      if (btn) btn.addEventListener('click', function(){
+        setCollapsed(!document.documentElement.classList.contains('sidebar-collapsed'));
+      });
+    });
+  })();
+</script>
+
 
