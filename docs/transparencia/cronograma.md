@@ -9,3 +9,10 @@ permalink: /transparencia/cronograma/
 
 # Cronograma
 Tabela mês a mês (1º–12º) com marcos e entregas.
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
