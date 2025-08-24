@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Mini-artigos
 nav_order: 24
 parent: Produtos
