@@ -1,6 +1,6 @@
 /* ===== Sidebar 200px + conteúdo full-width (Just the Docs) ===== */
 
-:root { --nav-width: 200px; }
+:root { --nav-width: 160px; }
 
 /* Expande layout do tema */
 .page, .main, .main-header, .main-content, .site-footer {
