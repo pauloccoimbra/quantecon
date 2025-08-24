@@ -198,3 +198,26 @@ html[data-theme="light"] .qe-card{
 /* espaçamento entre links do topo (opcional) */
 .aux-nav a + a,
 .qe-nav a + a { margin-left: .35rem; }
+
+/* ===== Centralizar os links do topo ===== */
+
+/* Just the Docs (aux_links) */
+.main-header { display: flex; flex-wrap: wrap; align-items: center; }
+
+/* Faz a barra de links ocupar a largura toda e centraliza */
+.main-header .aux-nav { width: 100%; }
+.aux-nav .aux-nav-list{
+  display: flex;
+  gap: .35rem;                 /* espaçamento entre os botões */
+  justify-content: center;     /* <-- centraliza */
+  padding: 0;
+  margin: .35rem 0 0;          /* um respiro abaixo do header */
+}
+.aux-nav .aux-nav-list-item{ list-style: none; }
+
+/* Se você usa uma barra sua (qe-nav), centraliza também */
+.qe-nav{
+  display: flex;
+  gap: .35rem;
+  justify-content: center;     /* <-- centraliza */
+}
