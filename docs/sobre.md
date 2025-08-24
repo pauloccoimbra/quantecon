@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Sobre
 nav_order: 10
 permalink: /sobre/
