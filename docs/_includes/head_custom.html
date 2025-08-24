@@ -1,18 +1,11 @@
-<!-- QuantEcon · Just the Docs — layout seguro (sem sobreposição) -->
+<!-- QuantEcon · Just the Docs — layout estável sem sobreposição -->
 <style>
-/* ===== Sidebar 160px + conteúdo que expande sem FIXED ===== */
+/* ===== Largura da sidebar ===== */
 :root{
-  --nav-width: 160px;      /* largura da sidebar */
+  --nav-width: 160px;  /* ajuste se quiser 140/180 etc. */
 }
 
-/* NÃO fixar o header — deixa o fluxo padrão do tema */
-.main-header{
-  position: static !important;
-  left: auto !important;
-  width: auto !important;
-}
-
-/* Sidebar empurra o conteúdo (sem sobrepor) */
+/* ===== Sidebar empurra o conteúdo (sem fixed) ===== */
 .side-bar{
   width: var(--nav-width) !important;
   box-sizing: border-box;
@@ -20,27 +13,44 @@
   background: var(--body-background, #fff);
 }
 
-/* Conteúdo recua pela sidebar */
+/* Tipografia/espaçamento da nav (mais confortável) */
+.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
+.side-bar .site-nav,
+.side-bar .navigation   { padding: 8px 6px; }
+.side-bar .nav-list     { margin: 0; }
+.side-bar .nav-list .nav-list-item > a,
+.side-bar .site-nav a   {
+  display: block;
+  padding: 6px 10px;
+  margin: 2px 6px;
+  line-height: 1.25;
+  border-radius: 6px;
+}
+.side-bar a:hover{ background: rgba(0,0,0,.05); }
+
+/* ===== Conteúdo desloca pela largura da sidebar ===== */
 .main{
   margin-left: var(--nav-width) !important;
-  width: auto !important;   /* usa a largura restante normalmente */
+  width: auto !important; /* usa a largura restante naturalmente */
+  transition: margin-left .2s ease;
 }
 
-/* Estado RECOLHIDO: some com a sidebar e zera a margem do conteúdo */
+/* ===== Estado recolhido (classe no <html>) ===== */
 html.sidebar-collapsed .side-bar{ display: none !important; }
 html.sidebar-collapsed .main{ margin-left: 0 !important; }
 
-/* Mobile: comportamento igual (recolhida por padrão via JS, não por CSS) */
+/* ===== Mobile: sem sidebar por padrão (via JS, não por CSS); conteúdo sempre 100% ===== */
 @media (max-width: 991px){
-  .main{ margin-left: 0 !important; }   /* se o usuário abrir a sidebar no mobile, o conteúdo pode ficar por baixo (ok), mas o padrão é recolhida */
+  .main{ margin-left: 0 !important; }
 }
 
-/* Botão ☰ (posicionado fora do fluxo; não cobre a lupa) */
+/* ===== Botão dentro do cabeçalho (não cobre a lupa) ===== */
+/* Colocaremos o botão DENTRO do header; tornamos o header posicionável */
+.main-header{ position: relative !important; }
 #sidebarToggle{
-  position: fixed;
-  top: 12px;
-  left: 12px;                 /* recolhida */
-  z-index: 20000;
+  position: absolute;           /* fica preso ao header */
+  top: 8px; left: 8px;          /* canto superior esquerdo do header */
+  z-index: 10;                  /* acima do fundo do header, abaixo do conteúdo */
   width: 36px; height: 36px;
   display: grid; place-items: center;
   border-radius: 8px;
@@ -50,30 +60,5 @@ html.sidebar-collapsed .main{ margin-left: 0 !important; }
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
   cursor: pointer; user-select: none;
   font-size: 18px; line-height: 1;
-  transition: left .2s ease;
 }
-/* Quando a sidebar está ABERTA, o botão acompanha a borda da sidebar */
-html:not(.sidebar-collapsed) #sidebarToggle{
-  left: calc(var(--nav-width) + 12px);
-}
-
-/* Evita barra de rolagem horizontal acidental */
-html, body{ overflow-x: hidden; }
-
-/* Seus wrappers continuam full-width */
-:root{ --qe-max: 100%; }
-.qe-header, .qe-hero, .qe-cards, .qe-footer, .qe-wrap{
-  max-width: none !important; width: 100% !important;
-}
-.qe-cards{
-  display:grid; gap:1rem;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  margin:0 16px 2rem 16px;
-}
-.qe-card{
-  padding:1rem; border-radius:.5rem; color:inherit;
-  background:transparent; border:1px solid var(--color-border,#444);
-}
-html[data-theme="dark"] .qe-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.18); }
-html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
 </style>
