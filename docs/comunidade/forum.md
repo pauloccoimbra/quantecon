@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Fórum de dúvidas
 nav_order: 41
 parent: Comunidade
