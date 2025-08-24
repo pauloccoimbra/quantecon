@@ -17,3 +17,10 @@ Trilhas formativas com certificado, voltadas para temas como:
 - Machine Learning com scikit-learn
 
 **Inscrições abertas via formulário institucional.**
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
