@@ -28,3 +28,10 @@
     } catch(e){}
   })();
 </script>
+
+<button id="sidebarToggle" onclick="(function(){
+  var on = document.documentElement.classList.toggle('sidebar-collapsed');
+  try{ localStorage.setItem('qe_sidebar_collapsed', on ? '1':'0'); }catch(e){}
+})()" title="Mostrar/ocultar navegação" aria-label="Mostrar/ocultar navegação"
+style="position:fixed;top:12px;left:12px;z-index:10000;width:36px;height:36px;display:grid;place-items:center;border-radius:8px;border:1px solid var(--color-border,#e5e7eb);background:var(--body-background,#fff);color:var(--text-color,#111);box-shadow:0 2px 8px rgba(0,0,0,.08);cursor:pointer;font-size:18px;">☰</button>
+
