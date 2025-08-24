@@ -1,10 +1,4 @@
-<!-- Botão ☰ (será movido para dentro do header via JS) -->
-<button id="sidebarToggle"
-        type="button"
-        title="Mostrar/ocultar navegação"
-        aria-label="Mostrar/ocultar navegação"
-        aria-pressed="false">☰</button>
-
+<!-- Inserção/controlador do botão ☰ (único) e preferência salva -->
 <script>
 (function () {
   function setCollapsed(on) {
@@ -14,27 +8,40 @@
     if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
 
-  // Estado salvo (ou recolhido por padrão no mobile)
+  // Aplica estado salvo (ou inicia recolhido no mobile, se nada salvo)
   try {
     var saved = localStorage.getItem('qe_sidebar_collapsed');
-    if (saved === '1' || (saved === null && window.innerWidth <= 991)) setCollapsed(true);
-    // Força tema claro; remova se não quiser
+    var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
+    setCollapsed(startCollapsed);
+    // Tema claro (remova se não quiser forçar)
     localStorage.setItem('theme', 'light');
     document.documentElement.setAttribute('data-theme', 'light');
   } catch (e) {}
 
-  // Mover o botão para dentro do header (evita sobreposição com conteúdo/busca)
   document.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById('sidebarToggle');
-    var header = document.querySelector('.main-header');
-    if (btn && header) header.prepend(btn);
+    // Remove duplicatas antigas do botão, se existirem
+    var dups = document.querySelectorAll('#sidebarToggle');
+    for (var i = 1; i < dups.length; i++) dups[i].remove();
 
-    if (btn) {
-      btn.addEventListener('click', function () {
-        var on = document.documentElement.classList.contains('sidebar-collapsed');
-        setCollapsed(!on);
-      });
+    var btn = document.getElementById('sidebarToggle');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'sidebarToggle';
+      btn.type = 'button';
+      btn.title = 'Mostrar/ocultar navegação';
+      btn.setAttribute('aria-label','Mostrar/ocultar navegação');
+      btn.textContent = '☰';
     }
+
+    // Insere no começo do header (fica no fluxo, sem sobrepor busca/conteúdo)
+    var header = document.querySelector('.main-header');
+    if (header && !header.contains(btn)) header.insertBefore(btn, header.firstChild);
+
+    // Click → alterna
+    btn.addEventListener('click', function () {
+      var on = document.documentElement.classList.contains('sidebar-collapsed');
+      setCollapsed(!on);
+    });
   });
 })();
 </script>
