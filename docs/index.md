@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Início
 nav_order: 1
 permalink: /
