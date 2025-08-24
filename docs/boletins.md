@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Boletim
 nav_order: 4
 permalink: /boletim/
