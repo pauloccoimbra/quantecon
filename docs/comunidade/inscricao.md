@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Inscrição de discentes
 nav_order: 43
 parent: Comunidade
