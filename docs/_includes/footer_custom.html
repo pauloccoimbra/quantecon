@@ -1,0 +1,30 @@
+<!-- Botão ☰ no corpo da página; o onclick alterna a classe na tag <html> -->
+<button id="sidebarToggle"
+        title="Mostrar/ocultar navegação"
+        aria-label="Mostrar/ocultar navegação"
+        onclick="(function(){
+          var on = document.documentElement.classList.toggle('sidebar-collapsed');
+          try{ localStorage.setItem('qe_sidebar_collapsed', on ? '1':'0'); }catch(e){}
+        })()"
+        style="
+          position:fixed; top:12px; left:12px; z-index:10000;
+          width:36px; height:36px; display:grid; place-items:center;
+          border-radius:8px; border:1px solid var(--color-border, #e5e7eb);
+          background: var(--body-background, #fff); color: var(--text-color, #111);
+          box-shadow:0 2px 8px rgba(0,0,0,.08); cursor:pointer; user-select:none;
+          font-size:18px; line-height:1;">
+  ☰
+</button>
+
+<script>
+  /* Aplica o estado salvo antes do primeiro clique e força tema claro (se quiser) */
+  (function(){
+    try {
+      if (localStorage.getItem('qe_sidebar_collapsed') === '1') {
+        document.documentElement.classList.add('sidebar-collapsed');
+      }
+      localStorage.setItem('theme','light');
+      document.documentElement.setAttribute('data-theme','light');
+    } catch(e){}
+  })();
+</script>
