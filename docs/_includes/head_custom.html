@@ -2,61 +2,86 @@
 <style>
 /* ===== Largura da sidebar ===== */
 :root{
-  --nav-width: 125px; /* ajuste aqui se quiser 140/180 etc. */
+  --nav-width: 160px; /* ajuste aqui se quiser 140/180 etc. */
 }
 
-/* ===== Remova “prisões” de largura do conteúdo ===== */
+/* ===== Remover quaisquer “prisões” de largura ===== */
 .page, .main, .main-content, .site-footer{
   max-width: none !important;
   width: 100% !important;
 }
-.main-content{ padding-left:16px; padding-right:16px; }
+.main-content{ padding-left: 16px; padding-right: 16px; }
 html, body{ overflow-x: hidden; }
 
-/* ===== Sidebar no formato padrão do tema (sem forçar position) =====
-   - Deixamos o Just the Docs controlar o posicionamento.
-   - Só garantimos a largura e o “empurrão” do conteúdo.
-*/
+/* ===== Sidebar no formato padrão do tema =====
+   Mantemos o comportamento do Just the Docs (fixa à esquerda).
+   Só garantimos largura e transição de entrada/saída. */
 .side-bar{
   width: var(--nav-width) !important;
+  transform: translateX(0);
+  transition: transform .2s ease;
   box-sizing: border-box;
   border-right: 1px solid var(--color-border, #e5e7eb);
   background: var(--body-background, #fff);
 }
 
-/* Conteúdo recua pela largura da sidebar */
+/* ===== Conteúdo recua pela largura da sidebar ===== */
 .main{
   margin-left: var(--nav-width) !important;
   width: auto !important;
   transition: margin-left .2s ease;
 }
 
+/* ===== Cabeçalho do conteúdo acompanha a largura da sidebar ===== */
+.main-header{
+  left: var(--nav-width) !important;
+  transition: left .2s ease;
+  position: fixed !important;   /* padrão do tema */
+  top: 0; right: 0;
+  z-index: 1000;
+}
+.main-content{ padding-top: 56px; } /* compensa header fixo (~56px) */
+
 /* ===== Estado RECOLHIDO (classe no <html> aplicada pelo botão) ===== */
-html.sidebar-collapsed .side-bar{ display: none !important; }
+html.sidebar-collapsed .side-bar{ transform: translateX(-100%); }
 html.sidebar-collapsed .main{ margin-left: 0 !important; }
+html.sidebar-collapsed .main-header{ left: 0 !important; }
 
 /* ===== Mobile =====
-   - Preferência salva decide; se não houver, JS inicia recolhida.
-*/
+   Se não houver preferência salva, começamos recolhido via JS.
+   Estas regras só garantem um layout coerente após o clique. */
 @media (max-width: 991px){
-  html.sidebar-collapsed .main{ margin-left: 0 !important; }
-  html:not(.sidebar-collapsed) .main{ margin-left: var(--nav-width) !important; }
+  .main-content{ padding-top: 56px; }
 }
 
-/* ===== Botão no header (inline). Se cair no fallback, virá com .floating ===== */
-.main-header{ position: relative !important; }
+/* ===== Botão no header (inline; sem sobrepor busca/conteúdo) ===== */
 #sidebarToggle{
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; margin-right: 8px;
-  border-radius: 8px; border: 1px solid var(--color-border, #e5e7eb);
-  background: var(--body-background, #fff); color: var(--text-color, #111);
-  font-size: 18px; line-height: 1; cursor: pointer; user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  margin-right: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e5e7eb);
+  background: var(--body-background, #fff);
+  color: var(--text-color, #111);
+  font-size: 18px; line-height: 1;
+  cursor: pointer; user-select: none;
 }
 #sidebarToggle:hover{ filter: brightness(0.98); }
 
-/* Fallback flutuante (caso não exista .main-header em alguma página rara) */
-#sidebarToggle.floating{
-  position: fixed; top: 12px; left: 12px; z-index: 20000;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+/* ===== Sidebar: tipografia/espaçamento confortável ===== */
+.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
+.side-bar .site-nav,
+.side-bar .navigation   { padding: 8px 6px; }
+.side-bar .nav-list     { margin: 0; }
+.side-bar .nav-list .nav-list-item > a,
+.side-bar .site-nav a   {
+  display: block;
+  padding: 6px 10px;
+  margin: 2px 6px;
+  line-height: 1.25;
+  border-radius: 6px;
 }
+.side-bar a:hover{ background: rgba(0,0,0,.05); }
 </style>
