@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Inscrição
 nav_order: 6
 permalink: /formulario/
