@@ -4,6 +4,8 @@ nav_order: 10
 permalink: /sobre/
 ---
 
+{% include topnav.html %}
+
 # Sobre o projeto
 
 O QuantEcon é um projeto de extensão da UFJF que promove o uso de ciência de dados e inteligência artificial para resolver problemas econômicos e financeiros.  
