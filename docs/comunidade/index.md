@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Comunidade
 nav_order: 40
 permalink: /comunidade/
