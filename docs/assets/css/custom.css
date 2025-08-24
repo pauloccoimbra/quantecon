@@ -1,31 +1,18 @@
 /* =========================
-   QuantEcon — custom.css (VISUAL seguro)
-   - Não altera layout do tema (sidebar/main/header)
+   QuantEcon — custom.css (VISUAL)
+   - Não altera layout do tema (sidebar já está oculta via head_custom)
    - Estilos para hero, cards, botões e rodapé
    ========================= */
 
-/* Tipografia e utilidades básicas */
+/* Tipografia/utilidades */
 :root {
   --qe-gap: 1rem;
   --qe-radius: .5rem;
   --qe-shadow: 0 2px 5px rgba(0,0,0,.06);
 }
-
 img { max-width: 100%; height: auto; }
 .main-content table { display:block; max-width:100%; overflow-x:auto; }
 pre, code { white-space: pre-wrap; word-break: break-word; }
-
-/* ===== Header / Nav (opcional) ===== */
-.qe-header{
-  display:flex; align-items:center; gap:1rem;
-  justify-content:space-between; padding:.75rem 1rem; margin:0;
-  font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-}
-.qe-header .logo{ width:44px; height:auto; border-radius:6px; }
-.qe-nav a{
-  margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem;
-}
-.qe-nav a.ativo{ outline:1px solid var(--color-border, #444); }
 
 /* ===== Hero ===== */
 .qe-hero{
@@ -42,7 +29,6 @@ pre, code { white-space: pre-wrap; word-break: break-word; }
   grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
   margin:0 16px 2rem;
 }
-
 .card, .qe-card{
   padding:1rem; border-radius:var(--qe-radius); color:inherit;
   background:transparent; border:1px solid var(--color-border, #444);
@@ -53,8 +39,6 @@ pre, code { white-space: pre-wrap; word-break: break-word; }
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0,0,0,.10);
 }
-
-/* Contraste bom em light/dark do Just the Docs */
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .qe-card{
   background:rgba(255,255,255,.05);
@@ -66,12 +50,9 @@ html[data-theme="light"] .qe-card{
   border-color:#e5e7eb;
 }
 
-/* Títulos/links dentro dos cards */
+/* Links dentro dos cards */
 .card h3, .qe-card h3{ margin-top:.25rem; color:inherit; }
-.card a, .qe-card a{
-  color: var(--link-color, #1f6feb);
-  text-decoration: none;
-}
+.card a, .qe-card a{ color: var(--link-color, #1f6feb); text-decoration: none; }
 .card a:hover, .qe-card a:hover{ text-decoration: underline; }
 
 /* ===== Botões ===== */
@@ -81,8 +62,6 @@ html[data-theme="light"] .qe-card{
   background:#1f6feb; color:#fff !important;
 }
 .btn:hover{ filter:brightness(1.05); }
-
-/* Variação “ghost” (opcional) */
 .btn-ghost{
   display:inline-block; padding:.48rem .85rem; border-radius:.55rem;
   border:1px solid var(--color-border,#d1d5db);
