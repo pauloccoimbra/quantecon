@@ -10,3 +10,10 @@ permalink: /produtos/tutoriais/
 
 # Tutoriais
 Passo a passo com código, dados e vídeos curtos.
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
