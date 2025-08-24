@@ -9,3 +9,10 @@ permalink: /transparencia/bibliografia/
 
 # Bibliografia
 Livros/artigos base e referências técnicas (Python, R, IA, Econometria).
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
