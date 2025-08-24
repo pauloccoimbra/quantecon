@@ -50,4 +50,63 @@
   }
 </style>
 
+<style>
+/* ===== Sidebar 160px + conteúdo full-width (Just the Docs) ===== */
+
+/* 1) Largura padrão da sidebar */
+:root { --nav-width: 160px; }
+
+/* 2) Expande layout do tema (nada “preso” em 1200/1800px) */
+.page, .main, .main-header, .main-content, .site-footer {
+  max-width: none !important;
+  width: 100% !important;
+}
+.main-content { padding-left: 16px; padding-right: 16px; }
+
+/* 3) Sidebar visível por padrão (e discreta) */
+.side-bar {
+  width: var(--nav-width) !important;
+  box-sizing: border-box;
+  transition: transform .2s ease, opacity .2s ease;
+  border-right: 1px solid var(--color-border, #e5e7eb);
+  background: var(--body-background, #fff);
+}
+.side-bar .site-nav { width: var(--nav-width) !important; }
+
+/* 4) Conteúdo desloca pela largura da sidebar */
+.main { margin-left: var(--nav-width) !important; transition: margin-left .2s ease; }
+/* Em alguns setups o cabeçalho é posicionado; alinhe também */
+.main-header { left: var(--nav-width) !important; transition: left .2s ease; }
+
+/* 5) Estado recolhido (classe aplicada no <html> pelo botão ☰) */
+html.sidebar-collapsed .side-bar { transform: translateX(-100%); opacity: 0; }
+html.sidebar-collapsed .main      { margin-left: 0 !important; }
+html.sidebar-collapsed .main-header { left: 0 !important; }
+
+/* 6) Mobile: recolhida por padrão */
+@media (max-width: 991px){
+  .side-bar { transform: translateX(-100%); opacity: 0; }
+  .main { margin-left: 0 !important; }
+  .main-header { left: 0 !important; }
+}
+
+/* 7) Seus wrappers: tela cheia */
+:root { --qe-max: 100%; }
+.qe-header, .qe-hero, .qe-cards, .qe-footer, .qe-wrap {
+  max-width: none !important; width: 100% !important;
+}
+.qe-cards {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  margin: 0 16px 2rem 16px;
+}
+.qe-card {
+  padding: 1rem; border-radius: .5rem; color: inherit;
+  background: transparent; border: 1px solid var(--color-border, #444);
+}
+html[data-theme="dark"] .qe-card{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); }
+html[data-theme="light"] .qe-card{ background: #fff; border-color: #e5e7eb; }
+</style>
+
+
 
