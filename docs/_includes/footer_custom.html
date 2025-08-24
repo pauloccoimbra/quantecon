@@ -1,4 +1,4 @@
-<!-- Inserção/controlador do botão ☰ (único) e preferência salva -->
+<!-- Botão ☰ único + controlador de estado -->
 <script>
 (function () {
   function setCollapsed(on) {
@@ -8,7 +8,7 @@
     if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
 
-  // Aplica estado salvo (ou inicia recolhido no mobile, se nada salvo)
+  // Aplica preferência salva; se nada salvo, inicia recolhida no mobile
   try {
     var saved = localStorage.getItem('qe_sidebar_collapsed');
     var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
@@ -19,9 +19,9 @@
   } catch (e) {}
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Remove duplicatas antigas do botão, se existirem
-    var dups = document.querySelectorAll('#sidebarToggle');
-    for (var i = 1; i < dups.length; i++) dups[i].remove();
+    // Evita duplicatas de botão
+    var olds = document.querySelectorAll('#sidebarToggle');
+    for (var i = 1; i < olds.length; i++) olds[i].remove();
 
     var btn = document.getElementById('sidebarToggle');
     if (!btn) {
@@ -33,11 +33,10 @@
       btn.textContent = '☰';
     }
 
-    // Insere no começo do header (fica no fluxo, sem sobrepor busca/conteúdo)
+    // Insere o botão no início do header (fica no fluxo, não sobrepõe a lupa)
     var header = document.querySelector('.main-header');
     if (header && !header.contains(btn)) header.insertBefore(btn, header.firstChild);
 
-    // Click → alterna
     btn.addEventListener('click', function () {
       var on = document.documentElement.classList.contains('sidebar-collapsed');
       setCollapsed(!on);
