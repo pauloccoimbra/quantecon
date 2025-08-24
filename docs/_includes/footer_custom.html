@@ -13,16 +13,17 @@
     var saved = localStorage.getItem('qe_sidebar_collapsed');
     var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
     setCollapsed(startCollapsed);
-    // Tema claro (remova se não quiser forçar)
-    localStorage.setItem('theme', 'light');
-    document.documentElement.setAttribute('data-theme', 'light');
+    // Força tema claro (remova se não quiser)
+    localStorage.setItem('theme','light');
+    document.documentElement.setAttribute('data-theme','light');
   } catch (e) {}
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Evita duplicatas de botão
+    // Remove botões duplicados, se existirem
     var olds = document.querySelectorAll('#sidebarToggle');
     for (var i = 1; i < olds.length; i++) olds[i].remove();
 
+    // Cria (ou reaproveita) o botão
     var btn = document.getElementById('sidebarToggle');
     if (!btn) {
       btn = document.createElement('button');
@@ -33,10 +34,17 @@
       btn.textContent = '☰';
     }
 
-    // Insere o botão no início do header (fica no fluxo, não sobrepõe a lupa)
+    // Tenta colocar no header; se não houver, usa fallback flutuante
     var header = document.querySelector('.main-header');
-    if (header && !header.contains(btn)) header.insertBefore(btn, header.firstChild);
+    if (header) {
+      if (!header.contains(btn)) header.insertBefore(btn, header.firstChild);
+      btn.classList.remove('floating');
+    } else {
+      if (!document.body.contains(btn)) document.body.appendChild(btn);
+      btn.classList.add('floating');
+    }
 
+    // Clique → alterna recolhido/aberto
     btn.addEventListener('click', function () {
       var on = document.documentElement.classList.contains('sidebar-collapsed');
       setCollapsed(!on);
