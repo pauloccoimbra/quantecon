@@ -158,3 +158,43 @@ html[data-theme="light"] .qe-card{
   box-shadow: var(--qe-shadow, 0 2px 5px rgba(0,0,0,.06));
 }
 
+/* ===== Links do topo como botões (mesma paleta dos cards) ===== */
+.aux-nav a,
+.qe-nav a{
+  display: inline-block;
+  padding: .48rem .85rem;
+  border-radius: .55rem;
+  border: 1px solid rgba(31,111,235,.5);
+  background: #1f6feb;          /* igual ao .btn dos cards */
+  color: #fff !important;
+  text-decoration: none;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.aux-nav a:hover,
+.aux-nav a:focus-visible,
+.qe-nav a:hover,
+.qe-nav a:focus-visible{
+  background: #ffffff !important; /* inverte como no hover do botão do card */
+  color: #1f6feb !important;
+  border-color: #1f6feb !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  transform: translateY(-3px);
+  text-decoration: none;
+  outline: none;
+}
+
+.aux-nav a:active,
+.qe-nav a:active{
+  transform: translateY(-1px);
+  box-shadow: var(--qe-shadow, 0 2px 5px rgba(0,0,0,.06));
+}
+
+/* espaçamento entre links do topo (opcional) */
+.aux-nav a + a,
+.qe-nav a + a { margin-left: .35rem; }
