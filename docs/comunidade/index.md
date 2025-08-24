@@ -10,3 +10,10 @@ has_children: true
 
 # Comunidade
 Participe: dúvidas, demandas da sociedade e seleção de discentes.
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
