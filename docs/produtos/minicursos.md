@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Minicursos
 nav_order: 22
 parent: Produtos
