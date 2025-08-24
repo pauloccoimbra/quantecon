@@ -5,5 +5,7 @@ parent: Produtos
 permalink: /produtos/videos/
 ---
 
+{% include topnav.html %}
+
 # Vídeos
 Aulas, demonstrações e playlists.
