@@ -17,7 +17,7 @@ permalink: /
 
 <div class="qe-cards">
   <div class="qe-card">
-    <h3>📊 Boletins Econômico</h3>
+    <h3>📊 Boletins Econômicos, Financeiros e de Tecnologia</h3>
     <p>Visualizações interativas e análises semanais</p>
     <p><a class="btn" href="{{ '/produtos/boletins/' | relative_url }}">Ver boletins</a></p>
   </div>
