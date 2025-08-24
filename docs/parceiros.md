@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Parceiros
 nav_order: 60
 permalink: /parceiros/
