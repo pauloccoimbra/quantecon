@@ -30,3 +30,24 @@
   })();
 </script>
 
+<style>
+  /* Fallback seguro: garante que o toggle funcione sem depender de SCSS */
+  :root { --nav-width: 160px; } /* <- ajuste fino da largura aqui */
+
+  /* Sidebar visível por padrão e conteúdo deslocado pela largura */
+  .side-bar { width: var(--nav-width) !important; transition: transform .2s ease, opacity .2s ease; }
+  .side-bar .site-nav { width: var(--nav-width) !important; }
+  .main { margin-left: var(--nav-width) !important; transition: margin-left .2s ease; }
+
+  /* Estado recolhido (classe no <html>) */
+  html.sidebar-collapsed .side-bar { transform: translateX(-100%); opacity: 0; }
+  html.sidebar-collapsed .main { margin-left: 0 !important; }
+
+  /* Mobile: recolhida por padrão */
+  @media (max-width: 991px){
+    .side-bar { transform: translateX(-100%); opacity: 0; }
+    .main { margin-left: 0 !important; }
+  }
+</style>
+
+
