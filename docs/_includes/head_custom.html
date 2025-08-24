@@ -1,81 +1,79 @@
-<!-- QuantEcon · Just the Docs — ajustes de layout no HEAD
-     - Sidebar 160px fixa sob o header
-     - Conteúdo que expande de verdade quando a sidebar recolhe
-     - Botão ☰ posicionado abaixo do header (o botão em si fica no footer) -->
+<!-- QuantEcon · Just the Docs — layout seguro (sem sobreposição) -->
 <style>
-/* ===== QuantEcon · Just the Docs – Sidebar 160px + layout sólido ===== */
-
-/* Ajustes globais */
+/* ===== Sidebar 160px + conteúdo que expande sem FIXED ===== */
 :root{
-  --nav-width: 160px;   /* largura da sidebar (ajuste aqui) */
-  --header-h: 56px;     /* altura do header do tema ~56px; ajuste se necessário */
+  --nav-width: 160px;      /* largura da sidebar */
 }
 
-/* Evita scroll horizontal */
-html, body { overflow-x: hidden; }
-
-/* HEADER (fixo no topo, ocupa a área útil à direita da sidebar) */
+/* NÃO fixar o header — deixa o fluxo padrão do tema */
 .main-header{
-  position: fixed !important;
-  top: 0;
-  left: var(--nav-width) !important;
-  width: calc(100vw - var(--nav-width)) !important;
-  z-index: 900; /* abaixo do botão e acima do conteúdo */
-  transition: left .2s ease, width .2s ease;
+  position: static !important;
+  left: auto !important;
+  width: auto !important;
 }
 
-/* SIDEBAR (fixa abaixo do header, na sua própria “camada”) */
+/* Sidebar empurra o conteúdo (sem sobrepor) */
 .side-bar{
-  position: fixed !important;
-  top: var(--header-h);
-  left: 0;
-  height: calc(100vh - var(--header-h));
   width: var(--nav-width) !important;
-  overflow: auto;
   box-sizing: border-box;
   border-right: 1px solid var(--color-border, #e5e7eb);
   background: var(--body-background, #fff);
-  z-index: 800; /* abaixo do header/botão, acima do conteúdo */
-  transform: translateX(0);
-  opacity: 1;
-  transition: transform .2s ease, opacity .2s ease;
 }
-/* algumas variantes do tema amarram a largura aqui */
-.side-bar .site-nav{ width: var(--nav-width) !important; }
 
-/* Tipografia/espaçamento da navegação */
-.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
-.side-bar .site-nav,
-.side-bar .navigation   { padding: 8px 6px; }
-.side-bar .nav-list     { margin: 0; }
-.side-bar .nav-list .nav-list-item > a,
-.side-bar .site-nav a   {
-  display: block;
-  padding: 6px 10px;
-  margin: 2px 6px;
-  line-height: 1.25;
-  border-radius: 6px;
-}
-.side-bar a:hover { background: rgba(0,0,0,.05); }
-
-/* CONTEÚDO (desloca quando a sidebar está aberta) */
-.page, .main, .main-content, .site-footer{
-  max-width: none !important;
-  width: 100% !important;
-}
+/* Conteúdo recua pela sidebar */
 .main{
   margin-left: var(--nav-width) !important;
-  width: calc(100vw - var(--nav-width)) !important;
-  transition: margin-left .2s ease, width .2s ease;
-  box-sizing: border-box;
-}
-.main-content{
-  max-width: none !important;
-  width: 100% !important;
-  padding: calc(var(--header-h) + 16px) 16px 16px; /* compensa header fixo */
+  width: auto !important;   /* usa a largura restante normalmente */
 }
 
-/* ===== ESTADO RECOLHIDO (classe aplicada no <html> pelo botão ☰) ===== */
-html.sidebar-collapsed .side-bar    { transform: translateX(-100%); opacity: 0; }
-html.sidebar-collapsed .main        { margin-left: 0 !important; width: 100vw !important; }
-html.sidebar-collapsed .main-header {
+/* Estado RECOLHIDO: some com a sidebar e zera a margem do conteúdo */
+html.sidebar-collapsed .side-bar{ display: none !important; }
+html.sidebar-collapsed .main{ margin-left: 0 !important; }
+
+/* Mobile: comportamento igual (recolhida por padrão via JS, não por CSS) */
+@media (max-width: 991px){
+  .main{ margin-left: 0 !important; }   /* se o usuário abrir a sidebar no mobile, o conteúdo pode ficar por baixo (ok), mas o padrão é recolhida */
+}
+
+/* Botão ☰ (posicionado fora do fluxo; não cobre a lupa) */
+#sidebarToggle{
+  position: fixed;
+  top: 12px;
+  left: 12px;                 /* recolhida */
+  z-index: 20000;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e5e7eb);
+  background: var(--body-background, #fff);
+  color: var(--text-color, #111);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  cursor: pointer; user-select: none;
+  font-size: 18px; line-height: 1;
+  transition: left .2s ease;
+}
+/* Quando a sidebar está ABERTA, o botão acompanha a borda da sidebar */
+html:not(.sidebar-collapsed) #sidebarToggle{
+  left: calc(var(--nav-width) + 12px);
+}
+
+/* Evita barra de rolagem horizontal acidental */
+html, body{ overflow-x: hidden; }
+
+/* Seus wrappers continuam full-width */
+:root{ --qe-max: 100%; }
+.qe-header, .qe-hero, .qe-cards, .qe-footer, .qe-wrap{
+  max-width: none !important; width: 100% !important;
+}
+.qe-cards{
+  display:grid; gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  margin:0 16px 2rem 16px;
+}
+.qe-card{
+  padding:1rem; border-radius:.5rem; color:inherit;
+  background:transparent; border:1px solid var(--color-border,#444);
+}
+html[data-theme="dark"] .qe-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.18); }
+html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
+</style>
