@@ -5,6 +5,8 @@ parent: Produtos
 permalink: /produtos/minicursos/
 ---
 
+{% include topnav.html %}
+
 # Minicursos
 Trilhas (Python, R, LLMs/IA generativa), ementas, datas e materiais.
 
