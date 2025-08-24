@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Contato
 nav_order: 70
 permalink: /contato/
