@@ -16,3 +16,10 @@ Passo a passo com notebooks interativos e vídeos explicativos.
 - Análise de séries temporais
 - Dashboards com Streamlit
 - Modelos preditivos com IA
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
