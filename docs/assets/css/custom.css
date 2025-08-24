@@ -88,3 +88,41 @@ html[data-theme="light"] .qe-card{
 /* ===== Helpers ===== */
 .qe-wrap{ padding: 0 16px; }
 .qe-muted{ opacity:.75; }
+
+/* ===== Top nav com efeito de "card" (mesmas cores e hover) ===== */
+/* cobre tanto links de um header seu (.qe-nav a) quanto os aux_links do Just the Docs (.aux-nav a) */
+.aux-nav a,
+.qe-nav a {
+  display: inline-block;
+  padding: .48rem .85rem;
+  border-radius: var(--qe-radius, .5rem);
+  border: 1px solid var(--color-border, #e5e7eb);
+  background: transparent;
+  color: var(--link-color, #1f6feb);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+/* hover/focus: mesmo destaque dos cards */
+.aux-nav a:hover,
+.aux-nav a:focus,
+.qe-nav a:hover,
+.qe-nav a:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  background: rgba(31,111,235,.06);      /* sutil, combina com o link azul */
+  border-color: rgba(31,111,235,.35);
+  text-decoration: underline;
+  outline: none;
+}
+
+/* active: “pressionado” como os cards */
+.aux-nav a:active,
+.qe-nav a:active {
+  transform: translateY(-1px);
+  box-shadow: var(--qe-shadow, 0 2px 5px rgba(0,0,0,.06));
+}
+
+/* opcional: espaçamento entre links do topo */
+.aux-nav a + a,
+.qe-nav a + a { margin-left: .35rem; }
