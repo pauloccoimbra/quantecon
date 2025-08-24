@@ -1,50 +1,77 @@
-/* ===== largura global do conteúdo (seguro) ===== */
-.main-content { max-width: 1800px !important; }  /* ajuste aqui se quiser 1000/1400 etc. */
+/* ===========================
+   QuantEcon · Just the Docs
+   Layout full-width + sidebar discreta com toggle
+   =========================== */
 
-/* ===== SEU ESTILO (header/nav/hero/cards/rodapé) ===== */
-:root { --qe-max: 1800px; }
+/* ---------- VARS GERAIS ---------- */
+:root{
+  /* largura padrão da sidebar no desktop */
+  --nav-width: 200px;
+  /* seus wrappers (header/hero/cards) passam a ocupar 100% */
+  --qe-max: 100%;
+}
 
-/* Header / Nav */
-.qe-header{ display:flex; align-items:center; gap:1rem; justify-content:space-between; padding:.75rem 1rem; margin:0 auto; max-width:var(--qe-max); }
-.qe-header .logo{ width:44px; height:auto; border-radius:6px; }
-.qe-nav a{ margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem; }
-.qe-nav a.ativo{ outline:1px solid var(--color-border, #444); }
+/* ---------- EXPANDE LAYOUT DO TEMA ---------- */
+/* remove limites do tema (page/main/header/content/footer) */
+.page,
+.main,
+.main-header,
+.main-content,
+.site-footer{
+  max-width: none !important;
+  width: 100% !important;
+}
 
-/* Hero */
-.qe-hero{ text-align:center; padding:2.5rem 1rem 2rem; margin:0 auto 1rem; max-width:var(--qe-max); font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-.qe-logo{ width:120px; height:auto; border-radius:8px; margin-bottom:.75rem; }
-.qe-hero h1{ margin:.25rem 0 .5rem; font-weight:700; }
-.qe-hero p{ margin:.25rem 0 .75rem; }
+/* conteúdo com um respiro nas laterais */
+.main-content{
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
-/* Grid dos cards */
-.qe-cards{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); margin:0 auto 2rem; max-width:var(--qe-max); }
+/* ---------- SIDEBAR DISCRETA (visível por padrão) ---------- */
+.side-bar{
+  width: var(--nav-width) !important;
+  transition: transform .2s ease, width .2s ease, opacity .2s ease;
+  border-right: 1px solid var(--color-border, #e5e7eb);
+  background: var(--body-background, #fff);
+}
 
-/* Cards integrados ao tema (dark & light) */
-.qe-card{ padding:1rem; border-radius:.5rem; color:inherit; background:transparent; border:1px solid var(--color-border, #444); }
-html[data-theme="dark"] .qe-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.18); }
-html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
-.qe-card h3{ margin-top:.25rem; color:inherit; }
-.qe-card a{ color: var(--link-color, #58a6ff); text-decoration:none; }
-.qe-card a:hover{ text-decoration:underline; }
+/* tipografia mais delicada na navegação */
+.side-bar .navigation{
+  font-size: .95rem;
+}
+.side-bar .navigation a{
+  border-radius: 6px;
+  padding: .25rem .4rem;
+}
+.side-bar .navigation a:hover{
+  background: rgba(0,0,0,.04);
+}
 
-/* Botão primário */
-.btn.btn-primary{ display:inline-block; padding:.45rem .8rem; border-radius:.5rem; border:1px solid rgba(31,111,235,.5); background:#1f6feb; color:#fff !important; }
-.btn.btn-primary:hover{ filter:brightness(1.05); }
+/* o conteúdo recua exatamente a largura da sidebar */
+.main{
+  margin-left: var(--nav-width) !important;
+  transition: margin-left .2s ease;
+}
 
-/* Rodapé */
-.qe-footer{ text-align:center; margin:2rem auto 0; max-width:var(--qe-max); font-size:.8rem; line-height:1.4; opacity:.75; }
+/* estado recolhido: sidebar some e o conteúdo ocupa 100% */
+.sidebar-collapsed .side-bar{
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.sidebar-collapsed .main{
+  margin-left: 0 !important;
+}
 
-/* (opcional) rodapé do tema um pouco menor */
-.site-footer, .site-footer p, .site-footer a { font-size: .85rem; }
+/* em telas pequenas, deixe o comportamento do tema agir (mobile) */
+@media (max-width: 991px){
+  /* opcional: recolher por padrão no mobile */
+  .side-bar{ transform: translateX(-100%); opacity: 0; }
+  .main{ margin-left: 0 !important; }
+}
 
-/* === Remover sidebar e expandir o conteúdo === */
-:root { --nav-width: 0px !important; }   /* zera a largura "reservada" da nav */
-
-.side-bar { display: none !important; }  /* some com a barra lateral */
-.main     { margin-left: 0 !important; } /* ocupa a largura total */
-
-/* (opcional) se o cabeçalho estiver deslocado */
-.main-header { left: 0 !important; }
-
-/* Largura confortável do conteúdo */
-.main-content { max-width: 1200px !important; } /* ajuste se quiser 1000/1400 etc. */
+/* ---------- BOTÃO TOGGLE (☰) ---------- */
+#sidebarToggle{
+  position: fixed;
+  top: 12px; left: 12px;
+  z
