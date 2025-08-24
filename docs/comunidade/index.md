@@ -24,18 +24,12 @@ Participe: dúvidas, demandas da sociedade e seleção de discentes.
     <p><a class="btn" href="{{ '/comunidade/forum/' | relative_url }}">Ver forum</a></p>
   </div>
   
-<div class="qe-cards">
   <div class="qe-card">
     <h3>📝 Inscrição de Voluntários</h3>
     <p>Inscrição de Voluntários.</p>
     <p><a class="btn" href="{{ '/comunidade/inscricao/' | relative_url }}">Ver inscricao</a></p>
   </div>
-
-  <div class="qe-card">
-    <h3>🎓 Minicursos</h3>
-    <p>Trilhas (Python, R, LLMs) com materiais e datas.</p>
-    <p><a class="btn" href="{{ '/produtos/minicursos/' | relative_url }}">Ver minicursos</a></p>
-  </div>
+</div>
 
 ---
 
