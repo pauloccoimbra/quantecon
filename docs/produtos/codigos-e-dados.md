@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Códigos & Dados
 nav_order: 25
 parent: Produtos
