@@ -1,42 +1,31 @@
-<!-- QuantEcon · Just the Docs — layout estável com toggle (CSS mínimo) -->
+<!-- QuantEcon · Just the Docs — CSS mínimo p/ colapsar a sidebar sem brigar com o tema -->
 <style>
-/* ===== Ajustes base ===== */
-:root{
-  --qe-nav-w: 160px;   /* Largura da sidebar */
+/* Não deixar nada “preso” em 1200/1800px */
+.page, .main, .main-content, .site-footer{
+  max-width: none !important;
+  width: 100% !important;
 }
+.main-content{ padding-left:16px; padding-right:16px; }
+html, body{ overflow-x: hidden; }
 
-/* Evita scroll horizontal */
-html, body { overflow-x: hidden; }
-
-/* ===== Sidebar com largura fixa (deixa o posicionamento padrão do tema) ===== */
-@media (min-width: 768px){
-  .side-bar{ width: var(--qe-nav-w) !important; }
-  .side-bar .site-nav{ width: var(--qe-nav-w) !important; }
-  /* Garante que o conteúdo respeite a largura da sidebar */
-  .main{ margin-left: var(--qe-nav-w) !important; transition: margin-left .2s ease; }
-}
-
-/* ===== Estado recolhido (ativado pela classe no <html>) ===== */
+/* ESTADO RECOLHIDO (classe no <html>) */
 html.sidebar-collapsed .side-bar{
   transform: translateX(-100%);
   opacity: 0;
   pointer-events: none;
   transition: transform .2s ease, opacity .2s ease;
 }
+/* Quando recolhida, o conteúdo ocupa toda a largura */
 html.sidebar-collapsed .main{
   margin-left: 0 !important;
+  transition: margin-left .2s ease;
 }
 
-/* No mobile, por padrão o conteúdo ocupa 100%; abrir a sidebar é opcional */
-@media (max-width: 767px){
-  .main{ margin-left: 0 !important; }
-}
-
-/* ===== Botão flutuante (sempre visível; não sobrepõe a busca) ===== */
+/* Botão flutuante (aparece em todas as páginas, sem sobrepor a busca) */
 #qeToggle{
   position: fixed;
-  top: 72px;            /* abaixo do header do JTD (~56px) */
-  left: 12px;           /* recolhida */
+  top: 72px;              /* abaixo do header do JTD (~56px) */
+  left: 12px;
   z-index: 20000;
   width: 36px; height: 36px;
   display: grid; place-items: center;
@@ -47,38 +36,16 @@ html.sidebar-collapsed .main{
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
   cursor: pointer; user-select: none;
   font-size: 18px; line-height: 1;
-  transition: left .2s ease;
 }
-/* Quando a sidebar está ABERTA, o botão acompanha a borda esquerda do conteúdo */
-@media (min-width: 768px){
-  html:not(.sidebar-collapsed) #qeToggle{
-    left: calc(var(--qe-nav-w) + 12px);
-  }
+/* Quando a sidebar está aberta (desktop), o botão acompanha a borda */
+@media (min-width: 992px){
+  html:not(.sidebar-collapsed) #qeToggle{ left: calc(12px + 264px); } /* 264px é a largura padrão do JTD */
 }
-
-/* ===== Larguras do conteúdo livres (sem “prisões”) ===== */
-.page, .main, .main-content, .site-footer{
-  max-width: none !important;
-  width: 100% !important;
+/* Mobile: conteúdo sempre 100%; abrir a sidebar é opcional */
+@media (max-width: 991px){
+  .main{ margin-left: 0 !important; }
 }
-.main-content{ padding-left: 16px; padding-right: 16px; }
-
-/* ===== Sidebar — tipografia/espaçamento confortável ===== */
-.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
-.side-bar .site-nav,
-.side-bar .navigation   { padding: 8px 6px; }
-.side-bar .nav-list     { margin: 0; }
-.side-bar .nav-list .nav-list-item > a,
-.side-bar .site-nav a   {
-  display: block;
-  padding: 6px 10px;
-  margin: 2px 6px;
-  line-height: 1.25;
-  border-radius: 6px;
-}
-.side-bar a:hover{ background: rgba(0,0,0,.05); }
 </style>
 
-<!-- (opcional) fontes + seu CSS visual -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- (opcional) sua folha visual; não altere layout aqui -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
