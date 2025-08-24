@@ -19,8 +19,6 @@ Coordenado pelo Prof. Paulo C. Coimbra, o projeto envolve docentes, discentes e 
 - Divulgar resultados aplicados e histórias de dados
 - Engajar comunidade acadêmica e externa
 
-- [Equipe]({{ '/equipe/' | relative_url }})
-- [Produtos]({{ '/produtos/' | relative_url }})
 <div class="qe-cards">
   <div class="qe-card">
     <h3>👥 Equipe</h3>
