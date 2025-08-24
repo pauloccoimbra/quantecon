@@ -4,9 +4,7 @@
    - Apenas estilos visuais e componentes
    ========================= */
 
-:root {
-  --qe-max: 100%;
-}
+:root { --qe-max: 100%; }
 
 /* ===== Header / Nav (opcional) ===== */
 .qe-header{
