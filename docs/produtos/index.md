@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Produtos
 nav_order: 20
 permalink: /produtos/
