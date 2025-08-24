@@ -1,18 +1,33 @@
 /* =========================
    QuantEcon — custom.css (VISUAL seguro)
-   - Não mexe em layout do tema (sidebar/main/header)
-   - Estilos de componentes e “cards”
+   - Não altera layout do tema (sidebar/main/header)
+   - Estilos para hero, cards, botões e rodapé
    ========================= */
 
-/* ===== Hero / Header opcionais ===== */
+/* Tipografia e utilidades básicas */
+:root {
+  --qe-gap: 1rem;
+  --qe-radius: .5rem;
+  --qe-shadow: 0 2px 5px rgba(0,0,0,.06);
+}
+
+img { max-width: 100%; height: auto; }
+.main-content table { display:block; max-width:100%; overflow-x:auto; }
+pre, code { white-space: pre-wrap; word-break: break-word; }
+
+/* ===== Header / Nav (opcional) ===== */
 .qe-header{
   display:flex; align-items:center; gap:1rem;
   justify-content:space-between; padding:.75rem 1rem; margin:0;
+  font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 .qe-header .logo{ width:44px; height:auto; border-radius:6px; }
-.qe-nav a{ margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem; }
+.qe-nav a{
+  margin:0 .4rem; text-decoration:none; padding:.35rem .6rem; border-radius:.4rem;
+}
 .qe-nav a.ativo{ outline:1px solid var(--color-border, #444); }
 
+/* ===== Hero ===== */
 .qe-hero{
   text-align:center; padding:2.5rem 1rem 2rem; margin:0 0 1rem 0;
   font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -23,37 +38,74 @@
 
 /* ===== Cards — suporta .cards/.card e .qe-cards/.qe-card ===== */
 .cards, .qe-cards{
-  display:grid; gap:1rem;
+  display:grid; gap:var(--qe-gap);
   grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
   margin:0 16px 2rem;
 }
-.card, .qe-card{
-  padding:1rem; border-radius:.5rem; color:inherit;
-  background:transparent; border:1px solid var(--color-border, #444);
-  box-shadow: 0 2px 5px rgba(0,0,0,.06);
-  transition: transform .2s ease;
-}
-.card:hover, .qe-card:hover{ transform: translateY(-3px); }
-html[data-theme="dark"] .card,
-html[data-theme="dark"] .qe-card{ background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.18); }
-html[data-theme="light"] .card,
-html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
 
-/* Links dentro de cards */
-.card a, .qe-card a{ color: var(--link-color, #1f6feb); text-decoration: none; }
+.card, .qe-card{
+  padding:1rem; border-radius:var(--qe-radius); color:inherit;
+  background:transparent; border:1px solid var(--color-border, #444);
+  box-shadow: var(--qe-shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover, .qe-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+}
+
+/* Contraste bom em light/dark do Just the Docs */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .qe-card{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.18);
+}
+html[data-theme="light"] .card,
+html[data-theme="light"] .qe-card{
+  background:#fff;
+  border-color:#e5e7eb;
+}
+
+/* Títulos/links dentro dos cards */
+.card h3, .qe-card h3{ margin-top:.25rem; color:inherit; }
+.card a, .qe-card a{
+  color: var(--link-color, #1f6feb);
+  text-decoration: none;
+}
 .card a:hover, .qe-card a:hover{ text-decoration: underline; }
 
-/* ===== Botão primário ===== */
+/* ===== Botões ===== */
 .btn, .btn.btn-primary{
-  display:inline-block; padding:.45rem .8rem; border-radius:.5rem;
-  border:1px solid rgba(31,111,235,.5); background:#1f6feb; color:#fff !important;
+  display:inline-block; padding:.48rem .85rem; border-radius:.55rem;
+  border:1px solid rgba(31,111,235,.5);
+  background:#1f6feb; color:#fff !important;
 }
 .btn:hover{ filter:brightness(1.05); }
 
-/* ===== Rodapé ===== */
-.qe-footer{ text-align:center; margin:2rem 0 0 0; font-size:.85rem; line-height:1.4; opacity:.8; }
-.site-footer, .site-footer p, .site-footer a { font-size: .85rem; }
+/* Variação “ghost” (opcional) */
+.btn-ghost{
+  display:inline-block; padding:.48rem .85rem; border-radius:.55rem;
+  border:1px solid var(--color-border,#d1d5db);
+  background:transparent; color:inherit; text-decoration:none;
+}
+.btn-ghost:hover{ background: rgba(0,0,0,.04); }
 
-/* ===== Tabelas/código largos ===== */
-.main-content table { display:block; max-width:100%; overflow-x:auto; }
-pre, code { white-space: pre-wrap; word-break: break-word; }
+/* ===== Rodapé ===== */
+.qe-footer{
+  text-align:center; margin:2rem 0 0 0;
+  font-size:.85rem; line-height:1.4; opacity:.85;
+}
+
+/* ===== Seções genéricas ===== */
+.section{ margin: 2rem 0; }
+.section h2{ margin: 0 0 .75rem 0; }
+
+/* ===== Responsividade ===== */
+@media (max-width: 900px){
+  .qe-hero{ padding:2rem 1rem 1.5rem; }
+  .cards, .qe-cards{ margin:0 12px 1.5rem; gap:.85rem; }
+}
+
+/* ===== Helpers ===== */
+.qe-wrap{ padding: 0 16px; }
+.qe-muted{ opacity:.75; }
