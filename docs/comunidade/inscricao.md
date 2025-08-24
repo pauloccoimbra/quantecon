@@ -5,5 +5,7 @@ parent: Comunidade
 permalink: /comunidade/inscricao/
 ---
 
+{% include topnav.html %}
+
 # Inscrição de voluntários
 Processo seletivo, vagas, critérios e cronograma.
