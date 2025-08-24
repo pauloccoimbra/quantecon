@@ -1,31 +1,14 @@
 /* =========================
-   QuantEcon — custom.css (seguro)
-   - Não altera layout (sidebar/main/header)
-   - Apenas estilos visuais e tipografia
+   QuantEcon — custom.css (visual seguro)
+   - Não mexe em layout (sidebar/main/header)
+   - Apenas estilos visuais e componentes
    ========================= */
 
 :root {
   --qe-max: 100%;
-  --nav-width: 160px; /* só para consistência de espaçamento na tipografia da sidebar */
 }
 
-/* ===== Sidebar: tipografia/espaçamento (sem posicionar) ===== */
-.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
-.side-bar .site-nav,
-.side-bar .navigation   { padding: 8px 6px; }
-.side-bar .nav-list     { margin: 0; }
-
-.side-bar .nav-list .nav-list-item > a,
-.side-bar .site-nav a {
-  display: block;
-  padding: 6px 10px;
-  margin: 2px 6px;
-  line-height: 1.25;
-  border-radius: 6px;
-}
-.side-bar a:hover { background: rgba(0,0,0,.05); }
-
-/* ===== Header / Nav ===== */
+/* ===== Header / Nav (opcional) ===== */
 .qe-header{
   display:flex; align-items:center; gap:1rem;
   justify-content:space-between; padding:.75rem 1rem;
