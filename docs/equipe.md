@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Equipe
 nav_order: 15
 permalink: /equipe/
