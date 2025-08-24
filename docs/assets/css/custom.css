@@ -36,3 +36,15 @@ html[data-theme="light"] .qe-card{ background:#fff; border-color:#e5e7eb; }
 
 /* (opcional) rodapé do tema um pouco menor */
 .site-footer, .site-footer p, .site-footer a { font-size: .85rem; }
+
+/* === Remover sidebar e expandir o conteúdo === */
+:root { --nav-width: 0px !important; }   /* zera a largura "reservada" da nav */
+
+.side-bar { display: none !important; }  /* some com a barra lateral */
+.main     { margin-left: 0 !important; } /* ocupa a largura total */
+
+/* (opcional) se o cabeçalho estiver deslocado */
+.main-header { left: 0 !important; }
+
+/* Largura confortável do conteúdo */
+.main-content { max-width: 1200px !important; } /* ajuste se quiser 1000/1400 etc. */
