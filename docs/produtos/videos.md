@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Vídeos
 nav_order: 26
 parent: Produtos
