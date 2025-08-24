@@ -4,6 +4,8 @@ nav_order: 15
 permalink: /equipe/
 ---
 
+{% include topnav.html %}
+
 # Equipe
 - **Coordenação:** …
 - **Discentes voluntarios:** …
