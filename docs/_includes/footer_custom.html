@@ -1,51 +1,41 @@
-<!-- QuantEcon · Just the Docs — CSS mínimo p/ colapsar a sidebar sem brigar com o tema -->
-<style>
-/* Não deixar nada “preso” em 1200/1800px */
-.page, .main, .main-content, .site-footer{
-  max-width: none !important;
-  width: 100% !important;
-}
-.main-content{ padding-left:16px; padding-right:16px; }
-html, body{ overflow-x: hidden; }
+<!-- Botão ☰ + controlador de estado (funciona em qualquer página do tema) -->
+<button id="qeToggle"
+        type="button"
+        title="Mostrar/ocultar navegação"
+        aria-label="Mostrar/ocultar navegação">☰</button>
 
-/* ESTADO RECOLHIDO (classe no <html>) */
-html.sidebar-collapsed .side-bar{
-  transform: translateX(-100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform .2s ease, opacity .2s ease;
-}
-/* Quando recolhida, o conteúdo ocupa toda a largura */
-html.sidebar-collapsed .main{
-  margin-left: 0 !important;
-  transition: margin-left .2s ease;
-}
+<script>
+(function () {
+  function setCollapsed(on) {
+    document.documentElement.classList.toggle('sidebar-collapsed', !!on);
+    try { localStorage.setItem('qe_sidebar_collapsed', on ? '1' : '0'); } catch (e) {}
+    var btn = document.getElementById('qeToggle');
+    if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
 
-/* Botão flutuante (aparece em todas as páginas, sem sobrepor a busca) */
-#qeToggle{
-  position: fixed;
-  top: 72px;              /* abaixo do header do JTD (~56px) */
-  left: 12px;
-  z-index: 20000;
-  width: 36px; height: 36px;
-  display: grid; place-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--color-border, #e5e7eb);
-  background: var(--body-background, #fff);
-  color: var(--text-color, #111);
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  cursor: pointer; user-select: none;
-  font-size: 18px; line-height: 1;
-}
-/* Quando a sidebar está aberta (desktop), o botão acompanha a borda */
-@media (min-width: 992px){
-  html:not(.sidebar-collapsed) #qeToggle{ left: calc(12px + 264px); } /* 264px é a largura padrão do JTD */
-}
-/* Mobile: conteúdo sempre 100%; abrir a sidebar é opcional */
-@media (max-width: 991px){
-  .main{ margin-left: 0 !important; }
-}
-</style>
+  // Preferência salva; se nada salvo, começa recolhida no mobile
+  try {
+    var saved = localStorage.getItem('qe_sidebar_collapsed');
+    var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
+    setCollapsed(startCollapsed);
+    // Tema claro (remova se não quiser)
+    localStorage.setItem('theme','light');
+    document.documentElement.setAttribute('data-theme','light');
+  } catch (e) {}
 
-<!-- (opcional) sua folha visual; não altere layout aqui -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  // Evita botões duplicados
+  (function dedupe(){
+    var all = document.querySelectorAll('#qeToggle');
+    for (var i = 1; i < all.length; i++) all[i].remove();
+  })();
+
+  // Clique → alterna
+  var btn = document.getElementById('qeToggle');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var on = document.documentElement.classList.contains('sidebar-collapsed');
+      setCollapsed(!on);
+    });
+  }
+})();
+</script>
