@@ -9,6 +9,7 @@ baseurl: "/quantecon"
 
 color_scheme: light
 search_enabled: true
+nav_enabled: true   # garante que a navegação lateral está habilitada
 
 aux_links:
   "GitHub": https://github.com/pauloccoimbra/quantecon
