@@ -1,17 +1,14 @@
-<!-- QuantEcon · Just the Docs — layout sólido (sem sobreposição) -->
+<!-- QuantEcon · Just the Docs — layout estável com toggle -->
 <style>
-/* ===== Largura da sidebar ===== */
+/* ===== Largura e comportamento ===== */
 :root{
-  --nav-width: 160px;   /* ajuste aqui se quiser 140/180 etc. */
+  --nav-width: 160px; /* largura da sidebar */
 }
 
-/* ===== Expande o conteúdo; nada “preso” em 1200/1800px ===== */
-.page, .main, .main-content, .site-footer{
-  max-width: none !important;
-  width: 100% !important;
-}
+/* Evita scroll horizontal acidental */
+html, body{ overflow-x: hidden; }
 
-/* ===== Sidebar empurra o conteúdo (sem position: fixed) ===== */
+/* ========= Sidebar: empurra o conteúdo (sem fixed) ========= */
 .side-bar{
   position: static !important;
   width: var(--nav-width) !important;
@@ -20,26 +17,32 @@
   background: var(--body-background, #fff);
 }
 
-/* ===== Conteúdo desloca pela largura da sidebar ===== */
+/* Conteúdo recua pela largura da sidebar */
 .main{
   margin-left: var(--nav-width) !important;
-  width: auto !important;             /* usa a largura restante */
+  width: auto !important;            /* usa a largura restante naturalmente */
   transition: margin-left .2s ease;
 }
 
-/* ===== Estado recolhido (classe no <html>) ===== */
+/* ====== Estado RECOLHIDO (classe no <html>) ====== */
 html.sidebar-collapsed .side-bar{ display: none !important; }
 html.sidebar-collapsed .main{ margin-left: 0 !important; }
 
-/* ===== Mobile =====
-   - Por padrão, seguiremos a preferência salva (ou iniciamos recolhido).
-   - Quando aberto, o conteúdo recua; quando fechado, ocupa 100%. */
+/* ====== Mobile ====== */
 @media (max-width: 991px){
-  html.sidebar-collapsed .main{ margin-left: 0 !important; }
-  html:not(.sidebar-collapsed) .main{ margin-left: var(--nav-width) !important; }
+  html.sidebar-collapsed .main{ margin-left: 0 !important; } /* recolhida = 100% */
+  html:not(.sidebar-collapsed) .main{ margin-left: var(--nav-width) !important; } /* aberta = recua */
 }
 
-/* ===== Botão no header (estilização básica; sem posição fixa) ===== */
+/* ====== Conteúdo amplo sem “prisão” de largura ====== */
+.page, .main, .main-content, .site-footer{
+  max-width: none !important;
+  width: 100% !important;
+}
+.main-content{ padding-left: 16px; padding-right: 16px; }
+
+/* ====== Botão dentro do header (sem sobrepor busca/conteúdo) ====== */
+.main-header{ position: relative !important; }
 #sidebarToggle{
   display: inline-flex;
   align-items: center;
@@ -55,7 +58,7 @@ html.sidebar-collapsed .main{ margin-left: 0 !important; }
 }
 #sidebarToggle:hover{ filter: brightness(0.98); }
 
-/* ===== Tipografia confortável da navegação lateral ===== */
+/* ====== Sidebar: tipografia/espaçamento confortável ====== */
 .side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
 .side-bar .site-nav,
 .side-bar .navigation   { padding: 8px 6px; }
@@ -69,8 +72,4 @@ html.sidebar-collapsed .main{ margin-left: 0 !important; }
   border-radius: 6px;
 }
 .side-bar a:hover{ background: rgba(0,0,0,.05); }
-
-/* ===== Qualquer conteúdo amplo não deve “vazar” lateralmente ===== */
-html, body{ overflow-x: hidden; }
-.main-content{ padding-left: 16px; padding-right: 16px; }
 </style>
