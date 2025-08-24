@@ -7,7 +7,7 @@ plugins: [jekyll-remote-theme]
 url: "https://pauloccoimbra.github.io"
 baseurl: "/quantecon"
 
-color_scheme: dark
+color_scheme: light
 logo: "/quantecon/assets/Paulo_C_Coimbra_Academy_logo.jpg"
 
 search_enabled: true
