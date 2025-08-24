@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Boletins
 nav_order: 21
 parent: Produtos
