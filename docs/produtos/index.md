@@ -55,3 +55,10 @@ Explore os materiais produzidos pelo projeto:
     <p><a class="btn" href="{{ '/produtos/noticias/' | relative_url }}">Ver notícias</a></p>
   </div>
 </div>
+
+---
+
+<p class="qe-footer">
+  Projeto de Extensão QuantEcon | Universidade Federal de Juiz de Fora — 
+  Contato: <a href="mailto:paulo.coimbra@ufjf.br">paulo.coimbra@ufjf.br</a> — Licença MIT
+</p>
