@@ -1,23 +1,40 @@
-<!-- Botão ☰: alterna a classe no <html> e salva a preferência -->
+<!-- Botão ☰ (será movido para dentro do header via JS) -->
 <button id="sidebarToggle"
+        type="button"
         title="Mostrar/ocultar navegação"
         aria-label="Mostrar/ocultar navegação"
-        onclick="(function(){
-          var on = document.documentElement.classList.toggle('sidebar-collapsed');
-          try{ localStorage.setItem('qe_sidebar_collapsed', on ? '1':'0'); }catch(e){}
-        })()">☰</button>
+        aria-pressed="false">☰</button>
 
 <script>
-  (function(){
-    try {
-      // inicia recolhida no mobile, ou usa preferência salva
-      var saved = localStorage.getItem('qe_sidebar_collapsed');
-      if (saved === '1' || (saved === null && window.innerWidth <= 991)) {
-        document.documentElement.classList.add('sidebar-collapsed');
-      }
-      // força tema claro (remova se não quiser)
-      localStorage.setItem('theme','light');
-      document.documentElement.setAttribute('data-theme','light');
-    } catch(e){}
-  })();
+(function () {
+  function setCollapsed(on) {
+    document.documentElement.classList.toggle('sidebar-collapsed', !!on);
+    try { localStorage.setItem('qe_sidebar_collapsed', on ? '1' : '0'); } catch (e) {}
+    var btn = document.getElementById('sidebarToggle');
+    if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
+  // Estado salvo (ou recolhido por padrão no mobile)
+  try {
+    var saved = localStorage.getItem('qe_sidebar_collapsed');
+    if (saved === '1' || (saved === null && window.innerWidth <= 991)) setCollapsed(true);
+    // Força tema claro; remova se não quiser
+    localStorage.setItem('theme', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+
+  // Mover o botão para dentro do header (evita sobreposição com conteúdo/busca)
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('sidebarToggle');
+    var header = document.querySelector('.main-header');
+    if (btn && header) header.prepend(btn);
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var on = document.documentElement.classList.contains('sidebar-collapsed');
+        setCollapsed(!on);
+      });
+    }
+  });
+})();
 </script>
