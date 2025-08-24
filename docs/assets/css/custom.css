@@ -52,14 +52,14 @@ html[data-theme="light"] .qe-card{
 
 /* Links dentro dos cards */
 .card h3, .qe-card h3{ margin-top:.25rem; color:inherit; }
-.card a, .qe-card a{ color: var(--link-color, #1f6feb); text-decoration: none; }
+.card a, .qe-card a{ color: var(--link-color, #000000); text-decoration: none; }
 .card a:hover, .qe-card a:hover{ text-decoration: underline; }
 
 /* ===== Botões ===== */
 .btn, .btn.btn-primary{
   display:inline-block; padding:.48rem .85rem; border-radius:.55rem;
   border:1px solid rgba(31,111,235,.5);
-  background:#1f6feb; color:#fff !important;
+  background:#1f6feb; color:#ffffff !important;
 }
 .btn:hover{ filter:brightness(1.05); }
 .btn-ghost{
