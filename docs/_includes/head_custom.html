@@ -1,133 +1,81 @@
-<!-- Botão ☰ no corpo da página + toggle da sidebar -->
-<button id="sidebarToggle"
-        title="Mostrar/ocultar navegação"
-        aria-label="Mostrar/ocultar navegação"
-        onclick="(function(){
-          var on = document.documentElement.classList.toggle('sidebar-collapsed');
-          try{ localStorage.setItem('qe_sidebar_collapsed', on ? '1':'0'); }catch(e){}
-        })()"
-        style="
-          position:fixed; top:12px; left:12px; z-index:10000;
-          width:36px; height:36px; display:grid; place-items:center;
-          border-radius:8px; border:1px solid var(--color-border, #e5e7eb);
-          background: var(--body-background, #fff); color: var(--text-color, #111);
-          box-shadow:0 2px 8px rgba(0,0,0,.08); cursor:pointer; user-select:none;
-          font-size:18px; line-height:1;">
-  ☰
-</button>
-
-<script>
-  // aplica o estado salvo (recolhida/aberta) no primeiro paint
-  (function(){
-    try {
-      if (localStorage.getItem('qe_sidebar_collapsed') === '1') {
-        document.documentElement.classList.add('sidebar-collapsed');
-      }
-      // Força tema claro; remova se não quiser forçar
-      localStorage.setItem('theme','light');
-      document.documentElement.setAttribute('data-theme','light');
-    } catch(e){}
-  })();
-</script>
-
+<!-- QuantEcon · Just the Docs — ajustes de layout no HEAD
+     - Sidebar 160px fixa sob o header
+     - Conteúdo que expande de verdade quando a sidebar recolhe
+     - Botão ☰ posicionado abaixo do header (o botão em si fica no footer) -->
 <style>
-  /* Fallback seguro: garante que o toggle funcione sem depender de SCSS */
-  :root { --nav-width: 160px; } /* <- ajuste fino da largura aqui */
+/* ===== QuantEcon · Just the Docs – Sidebar 160px + layout sólido ===== */
 
-  /* Sidebar visível por padrão e conteúdo deslocado pela largura */
-  .side-bar { width: var(--nav-width) !important; transition: transform .2s ease, opacity .2s ease; }
-  .side-bar .site-nav { width: var(--nav-width) !important; }
-  .main { margin-left: var(--nav-width) !important; transition: margin-left .2s ease; }
-
-  /* Estado recolhido (classe no <html>) */
-  html.sidebar-collapsed .side-bar { transform: translateX(-100%); opacity: 0; }
-  html.sidebar-collapsed .main { margin-left: 0 !important; }
-
-  /* Mobile: recolhida por padrão */
-  @media (max-width: 991px){
-    .side-bar { transform: translateX(-100%); opacity: 0; }
-    .main { margin-left: 0 !important; }
-  }
-</style>
-
-<style>
-/* ===== Sidebar 160px + conteúdo que EXPANDE de verdade ===== */
-:root { --nav-width: 160px; }
-
-/* Sidebar fixa na esquerda, em sua própria “camada” */
-.side-bar{
-  position: fixed !important;
-  top: 0; left: 0; height: 100vh;
-  width: var(--nav-width) !important;
-  overflow: auto;
-  box-sizing: border-box;
-  border-right: 1px solid var(--color-border, #e5e7eb);
-  background: var(--body-background, #fff);
-  z-index: 1000;  /* fica acima do conteúdo */
-  transform: translateX(0);
-  opacity: 1;
-  transition: transform .2s ease, opacity .2s ease;
+/* Ajustes globais */
+:root{
+  --nav-width: 160px;   /* largura da sidebar (ajuste aqui) */
+  --header-h: 56px;     /* altura do header do tema ~56px; ajuste se necessário */
 }
-/* algumas versões amarram a largura na .site-nav */
-.side-bar .site-nav{ width: var(--nav-width) !important; }
 
-/* Cabeçalho do conteúdo alinhado à direita da sidebar */
+/* Evita scroll horizontal */
+html, body { overflow-x: hidden; }
+
+/* HEADER (fixo no topo, ocupa a área útil à direita da sidebar) */
 .main-header{
   position: fixed !important;
   top: 0;
   left: var(--nav-width) !important;
   width: calc(100vw - var(--nav-width)) !important;
-  z-index: 900; /* abaixo da sidebar */
+  z-index: 900; /* abaixo do botão e acima do conteúdo */
   transition: left .2s ease, width .2s ease;
 }
 
-/* A área principal passa a TER a largura útil da tela */
+/* SIDEBAR (fixa abaixo do header, na sua própria “camada”) */
+.side-bar{
+  position: fixed !important;
+  top: var(--header-h);
+  left: 0;
+  height: calc(100vh - var(--header-h));
+  width: var(--nav-width) !important;
+  overflow: auto;
+  box-sizing: border-box;
+  border-right: 1px solid var(--color-border, #e5e7eb);
+  background: var(--body-background, #fff);
+  z-index: 800; /* abaixo do header/botão, acima do conteúdo */
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform .2s ease, opacity .2s ease;
+}
+/* algumas variantes do tema amarram a largura aqui */
+.side-bar .site-nav{ width: var(--nav-width) !important; }
+
+/* Tipografia/espaçamento da navegação */
+.side-bar .site-title   { margin: 8px 12px; font-size: .95rem; }
+.side-bar .site-nav,
+.side-bar .navigation   { padding: 8px 6px; }
+.side-bar .nav-list     { margin: 0; }
+.side-bar .nav-list .nav-list-item > a,
+.side-bar .site-nav a   {
+  display: block;
+  padding: 6px 10px;
+  margin: 2px 6px;
+  line-height: 1.25;
+  border-radius: 6px;
+}
+.side-bar a:hover { background: rgba(0,0,0,.05); }
+
+/* CONTEÚDO (desloca quando a sidebar está aberta) */
+.page, .main, .main-content, .site-footer{
+  max-width: none !important;
+  width: 100% !important;
+}
 .main{
   margin-left: var(--nav-width) !important;
   width: calc(100vw - var(--nav-width)) !important;
   transition: margin-left .2s ease, width .2s ease;
+  box-sizing: border-box;
 }
-
-/* Conteúdo em si: sem max-width e com respiro;
-   padding-top compensa o header fixo (ajuste se precisar) */
 .main-content{
   max-width: none !important;
   width: 100% !important;
-  padding: 56px 16px 16px; /* 56px ≈ altura do header do tema */
+  padding: calc(var(--header-h) + 16px) 16px 16px; /* compensa header fixo */
 }
 
-/* === Estado RECOLHIDO (classe aplicada pelo botão ☰) === */
-html.sidebar-collapsed .side-bar{ transform: translateX(-100%); opacity: 0; }
-html.sidebar-collapsed .main      { margin-left: 0 !important; width: 100vw !important; }
-html.sidebar-collapsed .main-header{ left: 0 !important; width: 100vw !important; }
-
-/* Mobile: recolhida por padrão e conteúdo 100% */
-@media (max-width: 991px){
-  .side-bar{ transform: translateX(-100%); opacity: 0; }
-  .main{ margin-left: 0 !important; width: 100vw !important; }
-  .main-header{ left: 0 !important; width: 100vw !important; }
-}
-
-/* Evita barra de rolagem horizontal em algumas combinações */
-html, body{ overflow-x: hidden; }
-
-/* Seus wrappers continuam full-width */
-:root { --qe-max: 100%; }
-.qe-header, .qe-hero, .qe-cards, .qe-footer, .qe-wrap{
-  max-width: none !important; width: 100% !important;
-}
-.qe-cards{
-  display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  margin: 0 16px 2rem 16px;
-}
-.qe-card{
-  padding: 1rem; border-radius: .5rem; color: inherit;
-  background: transparent; border: 1px solid var(--color-border,#444);
-}
-html[data-theme="dark"] .qe-card{ background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); }
-html[data-theme="light"] .qe-card{ background: #fff; border-color: #e5e7eb; }
-</style>
-
-
-
+/* ===== ESTADO RECOLHIDO (classe aplicada no <html> pelo botão ☰) ===== */
+html.sidebar-collapsed .side-bar    { transform: translateX(-100%); opacity: 0; }
+html.sidebar-collapsed .main        { margin-left: 0 !important; width: 100vw !important; }
+html.sidebar-collapsed .main-header {
