@@ -13,13 +13,13 @@
     var saved = localStorage.getItem('qe_sidebar_collapsed');
     var startCollapsed = (saved === '1') || (saved === null && window.innerWidth <= 991);
     setCollapsed(startCollapsed);
-    // Força tema claro (remova se não quiser)
+    // Tema claro (remova se não quiser forçar)
     localStorage.setItem('theme','light');
     document.documentElement.setAttribute('data-theme','light');
   } catch (e) {}
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Remove botões duplicados, se existirem
+    // Evita duplicatas de botão
     var olds = document.querySelectorAll('#sidebarToggle');
     for (var i = 1; i < olds.length; i++) olds[i].remove();
 
@@ -34,15 +34,9 @@
       btn.textContent = '☰';
     }
 
-    // Tenta colocar no header; se não houver, usa fallback flutuante
+    // Insere no início do header (fica no fluxo, antes da busca)
     var header = document.querySelector('.main-header');
-    if (header) {
-      if (!header.contains(btn)) header.insertBefore(btn, header.firstChild);
-      btn.classList.remove('floating');
-    } else {
-      if (!document.body.contains(btn)) document.body.appendChild(btn);
-      btn.classList.add('floating');
-    }
+    if (header && !header.contains(btn)) header.insertBefore(btn, header.firstChild);
 
     // Clique → alterna recolhido/aberto
     btn.addEventListener('click', function () {
