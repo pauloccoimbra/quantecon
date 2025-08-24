@@ -1,4 +1,4 @@
-<!-- Botão ☰ no corpo da página (fica abaixo do header; o CSS está em head_custom.html) -->
+<!-- Botão ☰: alterna a classe no <html> e salva a preferência -->
 <button id="sidebarToggle"
         title="Mostrar/ocultar navegação"
         aria-label="Mostrar/ocultar navegação"
@@ -8,14 +8,14 @@
         })()">☰</button>
 
 <script>
-  /* Aplica preferência salva; em telas pequenas, inicia recolhido se não houver preferência */
   (function(){
     try {
+      // inicia recolhida no mobile, ou usa preferência salva
       var saved = localStorage.getItem('qe_sidebar_collapsed');
       if (saved === '1' || (saved === null && window.innerWidth <= 991)) {
         document.documentElement.classList.add('sidebar-collapsed');
       }
-      /* Tema claro (remova estas duas linhas se não quiser forçar) */
+      // força tema claro (remova se não quiser)
       localStorage.setItem('theme','light');
       document.documentElement.setAttribute('data-theme','light');
     } catch(e){}
