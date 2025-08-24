@@ -8,12 +8,8 @@ url: "https://pauloccoimbra.github.io"
 baseurl: "/quantecon"
 
 color_scheme: light
-
 search_enabled: true
+
 aux_links:
   "GitHub": https://github.com/pauloccoimbra/quantecon
 aux_links_new_tab: true
-
-permalink: pretty
-sass: { style: compressed }
-
