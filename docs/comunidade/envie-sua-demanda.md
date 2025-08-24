@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Envie sua demanda
 nav_order: 42
 parent: Comunidade
