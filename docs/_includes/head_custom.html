@@ -1,17 +1,4 @@
-<!-- Aplica estado salvo da sidebar e força tema claro (remova se não quiser) -->
-<script>
-  (function(){
-    try {
-      if (localStorage.getItem('qe_sidebar_collapsed') === '1') {
-        document.documentElement.classList.add('sidebar-collapsed');
-      }
-      localStorage.setItem('theme','light');
-      document.documentElement.setAttribute('data-theme','light');
-    } catch(e){}
-  })();
-</script>
-
-<!-- Botão ☰ fixo; onclick faz o toggle SEM depender de listeners externos -->
+<!-- Botão ☰ no corpo da página + toggle da sidebar -->
 <button id="sidebarToggle"
         title="Mostrar/ocultar navegação"
         aria-label="Mostrar/ocultar navegação"
@@ -28,3 +15,18 @@
           font-size:18px; line-height:1;">
   ☰
 </button>
+
+<script>
+  // aplica o estado salvo (recolhida/aberta) no primeiro paint
+  (function(){
+    try {
+      if (localStorage.getItem('qe_sidebar_collapsed') === '1') {
+        document.documentElement.classList.add('sidebar-collapsed');
+      }
+      // Força tema claro; remova se não quiser forçar
+      localStorage.setItem('theme','light');
+      document.documentElement.setAttribute('data-theme','light');
+    } catch(e){}
+  })();
+</script>
+
