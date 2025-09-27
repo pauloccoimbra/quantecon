@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Boletins
+title: Artigos Científicos
 nav_order: 26
 parent: Produtos
 permalink: /produtos/artigos-cientificos/
