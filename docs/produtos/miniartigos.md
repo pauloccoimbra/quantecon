@@ -1,16 +1,15 @@
 ---
 layout: default
 title: Mini-artigos
-nav_order: 24
+nav_order: 27
 parent: Produtos
 permalink: /produtos/miniartigos/
 ---
 
 {% include topnav.html %}
 
-# Mini-artigos
-Textos curtos com resultados aplicados e links para reprodutibilidade.
-
+# Miniartigos
+Textos curtos que comunicam resultados de análises aplicadas ou estudos de caso de forma objetiva.
 ---
 
 <p class="qe-footer">
