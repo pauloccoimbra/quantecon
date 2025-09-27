@@ -12,7 +12,7 @@ has_children: true
 
 Explore os produtos acadêmicos & de extensão produzidos pelo projeto:
 
-<div class="qe-cards"
+<div class="qe-cards">
   <div class="qe-card">
     <h3>📚 Monografias / TCCs</h3>
     <p>Trabalhos de conclusão de curso e monografias aprofundando temas específicos em ciência de dados, inteligência artificial, economia e finanças. Apresentam resultados de investigação científica conduzida pelos estudantes voluntários, sob supervisão.</p>
