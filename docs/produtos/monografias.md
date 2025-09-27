@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Boletins
+title: Monografias
 nav_order: 23
 parent: Produtos
 permalink: /produtos/monografias/
