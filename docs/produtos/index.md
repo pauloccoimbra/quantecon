@@ -8,7 +8,7 @@ has_children: true
 
 {% include topnav.html %}
 
-# Produtos
+# Produtos Acadêmicos & de Extensão
 
 Explore os produtos acadêmicos & de extensão produzidos pelo projeto:
 
