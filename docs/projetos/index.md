@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Projetos
-nav_order: 39
+nav_order: 42
 permalink: /projetos/
 ---
 
