@@ -3,7 +3,7 @@ layout: default
 title: Monografias e TCCs
 nav_order: 21
 parent: Produtos
-permalink: /produtos/monografias/
+permalink: /produtos/monografias-e-tccs/
 ---
 
 {% include topnav.html %}
