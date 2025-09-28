@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Fórum de dúvidas
-nav_order: 41
+nav_order: 44
 parent: Comunidade
 permalink: /comunidade/forum/
 ---
