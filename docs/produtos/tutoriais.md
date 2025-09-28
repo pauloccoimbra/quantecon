@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tutoriais
-nav_order: 23
+nav_order: 30
 parent: Produtos
 permalink: /produtos/tutoriais/
 ---
