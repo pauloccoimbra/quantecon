@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Artigos Científicos
-nav_order: 26
+nav_order: 22
 parent: Produtos
 permalink: /produtos/artigos-cientificos/
 ---
