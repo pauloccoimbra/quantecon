@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Participações em Eventos
-nav_order: 29
+nav_order: 24
 parent: Produtos
 permalink: /produtos/participacoes-em-eventos/
 ---
