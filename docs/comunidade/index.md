@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Comunidade
-nav_order: 40
+nav_order: 43
 permalink: /comunidade/
 has_children: true
 ---
