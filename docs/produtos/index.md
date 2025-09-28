@@ -104,7 +104,7 @@ Explore os produtos acadêmicos & de extensão produzidos pelo projeto:
 
   <div class="qe-card">
     <h3>📢 Comunicados</h3>
-    <p>Anúncios oficiais sobre parcerias, próximos eventos, chamadas públicas e outras mensagens importantes. Um comunicado de imprensa é uma forma concisa de divulgar sua mensagem a jornalistas e ao público.</p>
+    <p>Anúncios oficiais sobre parcerias, próximos eventos, chamadas públicas e outras mensagens importantes. Um comunicado de imprensa, mais precisamente, é uma forma concisa de divulgar mensagens relativas ao projeto a jornalistas e ao público.</p>
     <p><a class="btn" href="{{ '/produtos/comunicados/' | relative_url }}">Ver comunicados</a></p>
   </div>
 
@@ -117,7 +117,7 @@ Explore os produtos acadêmicos & de extensão produzidos pelo projeto:
 
   <div class="qe-card">
     <h3>✨ Outros Produtos</h3>
-    <p>Seção dedicada a podcasts, estudos de caso, softwares, dashboards interativos e outras iniciativas relacionadas à ciência de dados, IA, economia e finanças. Novas ideias e colaborações são bem-vindas.</p>
+    <p>Seção dedicada a estudos de caso, softwares, dashboards interativos, apps e outras iniciativas relacionadas à ciência de dados, IA, economia e finanças. Novas ideias e colaborações são bem-vindas.</p>
     <p><a class="btn" href="{{ '/produtos/outros-produtos/' | relative_url }}">Ver outros produtos</a></p>
   </div>
   
