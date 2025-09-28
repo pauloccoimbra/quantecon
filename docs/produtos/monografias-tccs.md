@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Monografias
+title: Monografias e TCCs
 nav_order: 21
 parent: Produtos
 permalink: /produtos/monografias/
@@ -8,7 +8,7 @@ permalink: /produtos/monografias/
 
 {% include topnav.html %}
 
-# Monografias
+# Monografias & TCCs
 Trabalhos de conclusão de curso e monografias aprofundando temas específicos em ciência de dados, inteligência artificial, economia e finanças.
 
 ---
