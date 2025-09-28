@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Boletins
-nav_order: 21
+nav_order: 29
 parent: Produtos
 permalink: /produtos/boletins/
 ---
