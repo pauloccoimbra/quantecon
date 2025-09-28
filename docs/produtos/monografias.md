@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Monografias
-nav_order: 23
+nav_order: 21
 parent: Produtos
 permalink: /produtos/monografias/
 ---
