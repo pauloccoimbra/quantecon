@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Mini-artigos
-nav_order: 27
+title: Miniartigos
+nav_order: 22
 parent: Produtos
 permalink: /produtos/miniartigos/
 ---
