@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Inscrição de discentes
-nav_order: 43
+nav_order: 46
 parent: Comunidade
 permalink: /comunidade/inscricao/
 ---
