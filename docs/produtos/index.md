@@ -68,6 +68,12 @@ Explore os produtos acadêmicos & de extensão produzidos pelo projeto:
   </div>
 
   <div class="qe-card">
+    <h3>📰 Newsletter</h3>
+    <p>Fique por dentro das principais análises econômicas, financeiras e tecnológicas com a nossa newsletter periódica! Cada edição traz: Tendências de mercado e indicadores macroeconômicos, Novidades em inteligência artificial e ciência de dados, Conexões entre tecnologia e o setor financeiro. Distribuída regularmente aos assinantes, a newsletter é uma fonte ágil e confiável para quem quer acompanhar os avanços do projeto e os temas que moldam o futuro da economia.</p>
+    <p><a class="btn" href="{{ '/produtos/newsletter/' | relative_url }}">Ver newsletter</a></p>
+  </div>
+
+  <div class="qe-card">
     <h3>🎬 Vídeos & Webinars</h3>
     <p>Playlists de aulas, apresentações e demonstrações gravadas sobre ferramentas de ciência de dados, finanças quantitativas e inovações em IA. Inclui webinars ao vivo e gravações de palestras e workshops.</p>
     <p><a class="btn" href="{{ '/produtos/videos-e-webnars/' | relative_url }}">Ver videos & webinars</a></p>
